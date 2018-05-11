@@ -1,0 +1,260 @@
+Script started on Thu 13 Jul 2017 10:18:46 PM IST
+
+1. Write a java program to design the class Student with following field’s rno, name,
+dept, mark[3], avg. write necessary methods to read, print and copy the students
+details. Develop an application to maintain StudentRecord. Provide the menu for the
+following
+ Display all student details
+ Display the student’s details who have secured more than 90% avg mark.
+ Display the student’s details who are belongs to CSE dept.
+ Copy the student details ( any one )
+
+
+bash-3.2$ cat Student.java
+import java.util.*;
+public class Student{
+     private String rno;
+     private String name;
+     private String dept;
+     private int []mark;
+     private double avg;
+     public void copyDetails(Student s1)
+     {
+      s1.mark=new int[3];
+      s1.rno=rno;
+      s1.name=name;
+      s1.dept=dept;
+      for(int i=0;i<mark.length;i++)
+        s1.mark[i]=mark[i];
+      s1.avg=avg;
+     }
+     public void displayDetails()
+     {
+      System.out.println("*****Details*****");
+      System.out.println("Name : "+rno);
+      System.out.println("RollNo : "+name);
+      System.out.println("Department :"+dept);
+      for(int i=0;i<mark.length;i++)
+       System.out.println("Mark : "+mark[i]);
+      System.out.println("Average : "+avg);
+      System.out.println("*****************\n");
+     }
+     public double findAvg(int []mark){
+     	double sum=0,ab;
+        for(int i=0;i<mark.length;i++)
+          sum=mark[i]+sum;
+        ab=sum/3;
+        return ab;
+     }
+     public void setDetails(String x,String y,String z,int a[]){
+       mark=new int[3];
+       rno=x;
+       name=y;
+       dept=z;
+       mark[0]=a[0];
+       mark[1]=a[1];
+       mark[2]=a[2];
+       avg=findAvg(a);
+     } 
+     public double getAverage(){
+          return avg;
+     }
+     public String getRollNo(){
+        return rno;
+     }
+     public String getDepartment(){
+        return dept;
+     }      
+}
+bash-3.2$ cat MyClass.java
+import java.util.*;
+public class MyClass{
+  public static void main(String[]args){
+     int choice,n;
+     String  rno,name,dept;
+     int []mark=new int[3];
+     System.out.print("Enter the No of Details you want to enter ");
+     Scanner s=new Scanner(System.in);
+     n=s.nextInt();
+     Student []obj=new Student[n];
+     for(int i=0;i<obj.length;i++){
+        obj[i]=new Student();
+	System.out.println(" Details of Student "+(i+1));
+        System.out.print("Roll no : ");
+        rno=s.next();
+        System.out.print("Name : ");
+        name=s.next();
+        System.out.print("Department : ");
+        dept=s.next();
+        System.out.print("Marks Scored : ");
+        for(int j=0;j<mark.length;j++)
+          mark[j]=s.nextInt();
+        obj[i].setDetails(rno,name,dept,mark);
+     }
+
+     do{
+      System.out.println("*********************************************************");
+      System.out.println("\t 1]Display all Details");
+      System.out.println("\t 2]Display Students who have scored More than 90");
+      System.out.println("\t 3]Display Students who belong to CSE");
+      System.out.println("\t 4]Copy a Student Detail");
+      System.out.println("\t 5]Exit");
+      System.out.println("********************************************************\n");
+      System.out.print("Enter the Choice ");
+
+      choice=s.nextInt();
+      switch(choice){
+       case 1:
+       for(int i=0;i<obj.length;i++){
+         obj[i].displayDetails();
+       }         
+       break;
+       case 2:
+       for(int i=0;i<obj.length;i++){
+         if(obj[i].getAverage()>90)
+          obj[i].displayDetails();
+       }    
+       break;
+       case 3:
+       for(int i=0;i<obj.length;i++){
+         if("cse".equals(obj[i].getDepartment()) || "CSE".equals(obj[i].getDepartment())){
+          obj[i].displayDetails();
+         }
+       } 
+       break;
+       case 4:
+        Student co=new Student();
+        System.out.println("Enter the Student rollno you wanna copy ");
+        rno=s.next();
+        for(int i=0;i<obj.length;i++){
+         if(rno.equals(obj[i].getRollNo())){
+          obj[i].copyDetails(co);
+          System.out.println("Copied");
+          break;
+         }
+       }
+       break;
+       case 5:
+        System.out.println("Thank You");
+       break;
+       default:
+         System.out.println("Wrong Choice");
+       break;
+      }
+     }while(choice!=5);
+  }
+}
+bash-3.2$ java MyClass
+Enter the No of Details you want to enter 2
+ Details of Student 1
+Roll no : 15bcs074
+Name : bharath
+Department : cse
+Marks Scored : 90 98 96
+ Details of Student 2
+Roll no : 15ee087
+Name : Mani Kandan
+Department : Marks Scored : 98 90 92
+*********************************************************
+	 1]Display all Details
+	 2]Display Students who have scored More than 90
+	 3]Display Students who belong to CSE
+	 4]Copy a Student Detail
+	 5]Exit
+********************************************************
+
+Enter the Choice 1
+*****Details*****
+Name : 15bcs074
+RollNo : bharath
+Department :cse
+Mark : 90
+Mark : 98
+Mark : 96
+Average : 94.66666666666667
+*****************
+
+*****Details*****
+Name : 15ee087
+RollNo : Mani
+Department :Kandan
+Mark : 98
+Mark : 90
+Mark : 92
+Average : 93.33333333333333
+*****************
+
+*********************************************************
+	 1]Display all Details
+	 2]Display Students who have scored More than 90
+	 3]Display Students who belong to CSE
+	 4]Copy a Student Detail
+	 5]Exit
+********************************************************
+
+Enter the Choice 2
+*****Details*****
+Name : 15bcs074
+RollNo : bharath
+Department :cse
+Mark : 90
+Mark : 98
+Mark : 96
+Average : 94.66666666666667
+*****************
+
+*****Details*****
+Name : 15ee087
+RollNo : Mani
+Department :Kandan
+Mark : 98
+Mark : 90
+Mark : 92
+Average : 93.33333333333333
+*****************
+
+*********************************************************
+	 1]Display all Details
+	 2]Display Students who have scored More than 90
+	 3]Display Students who belong to CSE
+	 4]Copy a Student Detail
+	 5]Exit
+********************************************************
+
+Enter the Choice 3
+*****Details*****
+Name : 15bcs074
+RollNo : bharath
+Department :cse
+Mark : 90
+Mark : 98
+Mark : 96
+Average : 94.66666666666667
+*****************
+
+*********************************************************
+	 1]Display all Details
+	 2]Display Students who have scored More than 90
+	 3]Display Students who belong to CSE
+	 4]Copy a Student Detail
+	 5]Exit
+********************************************************
+
+Enter the Choice 4
+Enter the Student rollno you wanna copy 
+15eebcs074
+Copied
+*********************************************************
+	 1]Display all Details
+	 2]Display Students who have scored More than 90
+	 3]Display Students who belong to CSE
+	 4]Copy a Student Detail
+	 5]Exit
+********************************************************
+
+Enter the Choice 5
+Thank You
+bash-3.2$ exit
+exit
+
+Script done on Thu 13 Jul 2017 10:20:54 PM IST

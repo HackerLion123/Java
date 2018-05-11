@@ -1,0 +1,373 @@
+cript started on Thu 07 Sep 2017 01:20:08 PM IST
+bash-3.2$ ls employee
+CommissionEmployee.java  Employee.java	PermanentEmployee.java
+bash-3.2$ cat employee/Employee.java
+package employee;
+public abstract class Employee 
+{
+     private int id;
+     private String name;
+     private double salary;
+
+     /**
+     Default public constructor
+     */
+    public Employee() {
+    }
+    /**
+    * Constructor initializes employee id and name
+    * @param id Id of the employee
+    * @param name Name of the employee
+    */
+    public Employee(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+    /**
+     * Getter method to get the name of the employee
+     * @return name 
+     */
+    public String getName() {
+        return name;
+    }
+    /**
+     * Setter method that sets the name of the employee
+     * @param name Name of the employee
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+    /**
+     * getter method to get the salary
+     * @return salary 
+     */
+    public double getSalary() {
+        return salary;
+    }
+    /**
+     * Setter method to set the salary of the employee
+     * @param salary 
+     */
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+    /**
+     * getter method to get the id of the employee
+     * @return id
+     */
+    public int getId() {
+        return id;
+    }
+    /**
+     * Setter method to set the id of the employee
+     * @param id 
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    /**
+     * toString method to return the string having id, name, Salary of the employee
+     * @return
+     */
+    @Override
+    public String toString() {
+        return "Employee{" + "id=" + id + ", name=" + name + ", salary=" + salary + '}';
+    }
+    /**
+     * Abstract method to calculate salary to be implemented in derived class 
+     */
+    abstract public double calculateSalary(); 
+}
+bash-3.2$ ls employee
+CommissionEmployee.java  Employee.java	PermanentEmployee.java
+bash-3.2$ cat employee/PermanentEmployee.java
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package employee;
+public class PermanentEmployee extends Employee
+{
+    private int experience;
+    private double basicPay;
+    private int hra;
+    private double incrementPerYear;
+
+    /**
+     *
+     */
+    public PermanentEmployee() {
+    }
+
+    /**
+     *
+     * @param experience
+     * @param basicPay
+     * @param hra
+     * @param incrementPerYear
+     * @param id
+     * @param name
+     */
+    public PermanentEmployee(int experience, double basicPay, 
+			int hra, double incrementPerYear, int id, String name) {
+        super(id, name);
+        this.experience = experience;
+        this.basicPay = basicPay;
+        this.hra = hra;
+        this.incrementPerYear = incrementPerYear;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public double getIncrementPerYear() {
+        return incrementPerYear;
+    }
+
+    /**
+     *
+     * @param incrementPerYear
+     */
+    public void setIncrementPerYear(double incrementPerYear) {
+        this.incrementPerYear = incrementPerYear;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public int getExperience() {
+        return experience;
+    }
+
+    /**
+     *
+     * @param experience
+     */
+    public void setExperience(int experience) {
+        this.experience = experience;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public double getBasicPay() {
+        return basicPay;
+    }
+
+    /**
+     *
+     * @param basicPay
+     */
+    public void setBasicPay(double basicPay) {
+        this.basicPay = basicPay;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public int getHra() {
+        return hra;
+    }
+
+    /**
+     *
+     * @param hra
+     */
+    public void setHra(int hra) {
+        this.hra = hra;
+    }
+
+    @Override
+    public String toString() {
+        return "PermanentEmployee{" + "experience=" + experience + ", basicPay=" + basicPay + ", hra=" + hra + ", incrementPerYear=" + incrementPerYear + '}';
+    }
+    
+    @Override
+    public double calculateSalary()
+    {
+        double sal=basicPay+hra+experience*incrementPerYear;
+        super.setSalary(sal);
+        return sal;
+    }
+}
+bash-3.2$ ls employee/
+CommissionEmployee.java  Employee.java	PermanentEmployee.java
+bash-3.2$ cat employee/CommissionEmployee.java
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package employee;
+public class CommissionEmployee extends Employee
+{
+    private int noOfDaysWorked;
+    private double commissionPerDay;
+
+    public CommissionEmployee() {
+    }
+
+    public CommissionEmployee(int noOfDaysWorked, double commissionPerDay, int id, String name) {
+        super(id, name);
+        this.noOfDaysWorked = noOfDaysWorked;
+        this.commissionPerDay = commissionPerDay;
+    }
+
+    public double getCommissionPerDay() {
+        return commissionPerDay;
+    }
+
+    public void setCommissionPerDay(double commissionPerDay) {
+        this.commissionPerDay = commissionPerDay;
+    }
+
+    public int getNoOfDaysWorked() {
+        return noOfDaysWorked;
+    }
+
+    public void setNoOfDaysWorked(int noOfDaysWorked) {
+        this.noOfDaysWorked = noOfDaysWorked;
+    }
+
+    @Override
+    public String toString() {
+        return "CommissionEmployee{" + "noOfDaysWorked=" + 
+				noOfDaysWorked + ", commissionPerDay=" + commissionPerDay + '}';
+    }
+    
+    @Override
+    public double calculateSalary()
+    {
+        double sal=noOfDaysWorked*commissionPerDay;
+        super.setSalary(sal);
+        return sal;
+    }
+}bash-3.2$ ls
+employee  ex5_java.prn	MyEmployeeApp.java
+bash-3.2$ cat MyEmployeeApp.java
+import employee.CommissionEmployee;
+import employee.Employee;
+import employee.PermanentEmployee;
+import java.util.Scanner;
+public class MyEmployeeApp {
+    public static void main(String [] args)
+    {
+                Employee emp1 = null;
+                Scanner scan=new Scanner(System.in);
+                int id,days,experiance,hra;
+                double basicPay,increment,commission;
+                String name;
+                int choice;
+                do
+                {
+                    System.out.println("-----------------------------");
+                    System.out.println("|\t 1 - Permanent Employee  |");
+                    System.out.println("|\t 2 - Commission Employee |");
+                    System.out.println("|\t Any other key to Exit \n");
+                    System.out.println("-----------------------------");
+                    System.out.print("\tEnter the choice : ");
+                    choice=scan.nextInt();
+                    switch(choice)
+                    {
+                        case 1:
+                            System.out.print(" Enter the ID of employee : ");
+                            id=scan.nextInt();
+                            System.out.print(" Enter name : ");
+                            name=scan.next();
+                            System.out.print(" Enter the experiance : ");
+                            experiance=scan.nextInt();
+                            System.out.print(" Enter the basic pay : ");
+                            basicPay=scan.nextDouble();
+                            System.out.print(" Enter the HRA : ");
+                            hra=scan.nextInt();
+                            System.out.print(" Enter the increment per year : ");
+                            increment=scan.nextDouble();
+                            emp1=new PermanentEmployee(experiance,basicPay,hra,increment,id,name);
+                            break;
+                        case 2:
+                             System.out.print(" Enter the ID of employee : ");
+                             id=scan.nextInt();
+                             System.out.print(" Enter name : ");
+                             name=scan.next();
+                             System.out.print(" Enter the number of days worked : ");
+                             days=scan.nextInt();
+                             System.out.println("Enter the commission per day : ");
+                             commission=scan.nextDouble();
+                             emp1=new CommissionEmployee(days, commission, id, name);
+                             break;
+                    }
+                    if(emp1!=null)
+                    {
+			System.out.println(" Salary is : "+emp1.calculateSalary());
+			if(emp1 instanceof PermanentEmployee)
+			{
+         PermanentEmployee pEmp1=(PermanentEmployee)emp1;
+         System.out.print(" The basic pay of the employee is "+pEmp1.getBasicPay());
+         System.out.println(" The experience of the employee is "
+												+pEmp1.getExperience());
+			}
+			else if(emp1 instanceof CommissionEmployee)
+			{
+         CommissionEmployee cEmp1=(CommissionEmployee)emp1;
+         System.out.println(" The commission of the employee is "
+									+cEmp1.getCommissionPerDay());
+			}
+      }
+       emp1=null;			
+       }while(choice==1 || choice==2);
+    System.out.print("\n Exiting ");
+    System.out.println("\n ----------- THANK YOU ------------");
+    }
+}bash-3.2$ java MyEmployeeApp
+bash-3.2$ java MyEmployeeApp
+-----------------------------
+	 1 - Permanent Employee  
+	 2 - Commission Employee 
+	 Any other key to Exit 
+
+-----------------------------
+	Enter the choice : 1
+ Enter the ID of employee : 1
+ Enter name : sathish
+ Enter the experiance : 10
+ Enter the basic pay : 10000
+ Enter the HRA : 1000
+ Enter the increment per year : 500
+ Salary is : 16000.0
+ The basic pay of the employee is 10000.0 The experience of the employee is 10
+-----------------------------
+	 1 - Permanent Employee  
+	 2 - Commission Employee 
+	 Any other key to Exit 
+
+-----------------------------
+	Enter the choice : 2
+ Enter the ID of employee : 23
+ Enter name :kumar
+ Enter the number of days worked : 1000
+Enter the commission per day : 
+250
+ Salary is : 25000.0
+ The commission of the employee is 250.0
+-----------------------------
+	 1 - Permanent Employee  
+   2 - Commission Employee 
+	 Any other key to Exit 
+
+-----------------------------
+	Enter the choice : 6
+
+ Exiting 
+ ----------- THANK YOU ------------
+bash-3.2$ exit
+exit
+
+Script done on Thu 07 Sep 2017 01:24:18 PM IST

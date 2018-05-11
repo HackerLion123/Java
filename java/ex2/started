@@ -1,0 +1,611 @@
+Script started on Sat 16 Sep 2017 12:16:18 AM IST
+bash-3.2$ bash-3.2$ cat Papulation.java
+bash: bash-3.2$: command not found
+bash-3.2$ import java.util.Arrays;
+import java.util.Scanner;
+import: unable to open X server `'.
+bash-3.2$ import java.util.Scanner;
+import: unable to open X server `'.
+bash-3.2$ public class Papulation
+bash: public: command not found
+bash-3.2$ {
+>  public static void main(String[] args)
+bash: syntax error near unexpected token `('
+bash-3.2$  {
+>   int No_State,No_District,No_City;
+>   Scanner p=new Scanner(System.in);
+bash: syntax error near unexpected token `('
+bash-3.2$   System.out.print("Enter the number of states:\n");
+bash: syntax error near unexpected token `"Enter the number of states:\n"'
+bash-3.2$   No_State=p.nextInt();
+bash: syntax error near unexpected token `('
+bash-3.2$   System.out.print("Enter the number of districts:\n");
+bash: syntax error near unexpected token `"Enter the number of districts:\n"'
+bash-3.2$   No_District=p.nextInt();
+bash: syntax error near unexpected token `('
+bash-3.2$   System.out.print("Enter the number of cities:\n");
+bash: syntax error near unexpected token `"Enter the number of cities:\n"'
+bash-3.2$   No_City=p.nextInt();
+bash: syntax error near unexpected token `('
+bash-3.2$   int population[][][]=new int[No_State][No_District][No_City];
+bash: int: command not found
+bash-3.2$   for(int i=0;i<No_State;i++)
+bash: syntax error near unexpected token `('
+bash-3.2$     for(int j=0;j<No_District;j++)
+bash: syntax error near unexpected token `('
+bash-3.2$       for(int k=0;k<No_City;k++)
+bash: syntax error near unexpected token `('
+bash-3.2$         {
+>          System.out.println("Enter the population of
+>          "+i+"th state "+j+"th district "+k+"th city:");
+bash: syntax error near unexpected token `"Enter the population of
+         "+i+"th state "+j+"th district "+k+"th city:"'
+bash-3.2$          population[i][j][k]=p.nextInt();
+bash: syntax error near unexpected token `;'
+bash-3.2$         }
+bash: syntax error near unexpected token `}'
+bash-3.2$   System.out.println("The population of all cities are:");
+bash: syntax error near unexpected token `"The population of all cities are:"'
+bash-3.2$   System.out.println(Arrays.deepToString(population));
+bash: syntax error near unexpected token `Arrays.deepToString'
+bash-3.2$   System.out.println("The populations of all states are:");
+bash: syntax error near unexpected token `"The populations of all states are:"'
+bash-3.2$   int result=0;
+bash: int: command not found
+bash-3.2$   for(int i=0;i<No_State;i++)
+bash: syntax error near unexpected token `('
+bash-3.2$   {
+>     for(int j=0;j<No_District;j++)
+bash: syntax error near unexpected token `('
+bash-3.2$       for(int k=0;k<No_City;k++)
+bash: syntax error near unexpected token `('
+bash-3.2$         result+=population[i][j][k];
+bash-3.2$     System.out.println("The population of state "+i+" is "+result);
+bash: syntax error near unexpected token `"The population of state "+i+" is "+result'
+bash-3.2$     result=0;
+bash-3.2$ 
+bash-3.2$     }
+bash: syntax error near unexpected token `}'
+bash-3.2$   }
+bash: syntax error near unexpected token `}'
+bash-3.2$ }
+bash: syntax error near unexpected token `}'
+bash-3.2$ 
+bash-3.2$ 
+bash-3.2$ bash-3.2$ java Papulation
+bash: bash-3.2$: command not found
+bash-3.2$ Enter the number of states:
+bash: Enter: command not found
+bash-3.2$ 2
+bash: 2: command not found
+bash-3.2$ Enter the number of districts:
+bash: Enter: command not found
+bash-3.2$ 2
+bash: 2: command not found
+bash-3.2$ Enter the number of cities:
+bash: Enter: command not found
+bash-3.2$ 2
+bash: 2: command not found
+bash-3.2$ Enter the population of 0th state 0th district 0th city:
+bash: Enter: command not found
+bash-3.2$ 20
+bash: 20: command not found
+bash-3.2$ Enter the population of 0th state 0th district 1th city:
+bash: Enter: command not found
+bash-3.2$ 30
+bash: 30: command not found
+bash-3.2$ Enter the population of 0th state 1th district 0th city:
+bash: Enter: command not found
+bash-3.2$ 40
+bash: 40: command not found
+bash-3.2$ Enter the population of 0th state 1th district 1th city:
+bash: Enter: command not found
+bash-3.2$ 50
+bash: 50: command not found
+bash-3.2$ Enter the population of 1th state 0th district 0th city:
+bash: Enter: command not found
+bash-3.2$ 60
+bash: 60: command not found
+bash-3.2$ Enter the population of 1th state 0th district 1th city:
+bash: Enter: command not found
+bash-3.2$ 70
+bash: 70: command not found
+bash-3.2$ Enter the population of 1th state 1th district 0th city:
+bash: Enter: command not found
+bash-3.2$ 40
+bash: 40: command not found
+bash-3.2$ Enter the population of 1th state 1th district 1th city:
+bash: Enter: command not found
+bash-3.2$ 90
+bash: 90: command not found
+bash-3.2$ The population of all cities are:
+bash: The: command not found
+bash-3.2$ [[[20, 30], [40, 50]], [[60, 70], [40, 90]]]
+bash: [[[20,: command not found
+bash-3.2$ The populations of all states are:
+bash: The: command not found
+bash-3.2$ The population of state 0 is 140
+bash: The: command not found
+bash-3.2$ The population of state 1 is 260
+bash: The: command not found
+bash-3.2$ bash-3.2$ cat MyEmpApp.java
+bash: bash-3.2$: command not found
+bash-3.2$ import java.util.Scanner;
+public class MyEmpApp
+{
+import: unable to open X server `'.
+bash-3.2$ public class MyEmpApp
+bash: public: command not found
+bash-3.2$ {
+>  public static void main(String[]arg)
+bash: syntax error near unexpected token `('
+bash-3.2$  {
+>    Emp[] ed;
+>    Scanner sin=new Scanner(System.in);
+bash: syntax error near unexpected token `('
+bash-3.2$    System.out.print("Enter the number of employee\n");
+bash: syntax error near unexpected token `"Enter the number of employee\n"'
+bash-3.2$    int n=sin.nextInt();
+bash: syntax error near unexpected token `('
+bash-3.2$    ed=new Emp[n];
+bash: Emp[n]: command not found
+bash-3.2$    String x;
+bash: String: command not found
+bash-3.2$    String y;
+   String p,q;
+bash: String: command not found
+bash-3.2$    String p,q;
+   int a;
+bash: String: command not found
+bash-3.2$    int a;
+bash: int: command not found
+bash-3.2$    for(int i=0;i<ed.length;i++)
+bash: syntax error near unexpected token `('
+bash-3.2$    {
+>     System.out.print("Enter the details\n");
+bash: syntax error near unexpected token `"Enter the details\n"'
+bash-3.2$     System.out.println("Enter the employer id :");
+bash: syntax error near unexpected token `"Enter the employer id :"'
+    x=sin.next();bash-3.2$     x=sin.next();
+bash: syntax error near unexpected token `('
+bash-3.2$     System.out.println("Enter the name of the employee :");
+bash: syntax error near unexpected token `"Enter the name of the employee :"'
+bash-3.2$     p=sin.next();
+bash: syntax error near unexpected token `('
+bash-3.2$     System.out.println("Enter the department of the employee:");
+bash: syntax error near unexpected token `"Enter the department of the employee:"'
+bash-3.2$     q=sin.next();
+bash: syntax error near unexpected token `('
+bash-3.2$     System.out.println("Enter the years of experience:");
+bash: syntax error near unexpected token `"Enter the years of experience:"'
+bash-3.2$     y=sin.next();
+bash: syntax error near unexpected token `('
+bash-3.2$     System.out.println("Enter the salary:");
+bash: syntax error near unexpected token `"Enter the salary:"'
+bash-3.2$     a=sin.nextInt();
+bash: syntax error near unexpected token `('
+    ed[i]=new Emp();
+bash-3.2$     ed[i]=new Emp();
+bash: syntax error near unexpected token `('
+bash-3.2$     ed[i].setEmp(a,x,y,p,q);
+bash: syntax error near unexpected token `a,x,y,p,q'
+bash-3.2$    }
+bash: syntax error near unexpected token `}'
+bash-3.2$    int op;
+bash: int: command not found
+bash-3.2$    do
+bash: syntax error near unexpected token `do'
+bash-3.2$    {
+>      System.out.print("Menu\n");
+bash: syntax error near unexpected token `"Menu\n"'
+bash-3.2$      System.out.print("1.Display all the employee details\n
+>                  2.Display employee experience equal to 5years\n
+     3.Display employee salary more than 10,000\n
+>      3.Display employee salary more than 10,000\n
+>      4.Copy any one of employee details\n5.Exit\n");
+bash: syntax error near unexpected token `"1.Display all the employee details\n
+                 2.Display employee experience equal to 5years\n
+     3.Display employee salary more than 10,000\n
+     4.Copy any one of employee details\n5.Exit\n"'
+bash-3.2$      System.out.print("Enter the option\n");
+bash: syntax error near unexpected token `"Enter the option\n"'
+bash-3.2$      op=sin.nextInt();
+bash: syntax error near unexpected token `('
+bash-3.2$      switch(op)
+bash: syntax error near unexpected token `op'
+bash-3.2$      {
+>       case 1:
+>        for(int i=0;i<ed.length;i++)
+bash: syntax error near unexpected token `for'
+bash-3.2$       {
+>        ed[i].display();
+bash: syntax error near unexpected token `;'
+bash-3.2$       }
+bash: syntax error near unexpected token `}'
+bash-3.2$       break;
+bash: break: only meaningful in a `for', `while', or `until' loop
+bash-3.2$       case 2:
+>        for(int i=0;i<ed.length;i++)
+bash: syntax error near unexpected token `for'
+bash-3.2$        {
+>          if("5years".equals(ed[i].getexperience())
+bash: syntax error near unexpected token `ed[i].getexperience'
+bash-3.2$          ed[i].display();
+bash: syntax error near unexpected token `;'
+bash-3.2$          //ed[i].getexperience();
+bash: syntax error near unexpected token `;'
+bash-3.2$        }
+bash: syntax error near unexpected token `}'
+bash-3.2$        break;
+bash: break: only meaningful in a `for', `while', or `until' loop
+bash-3.2$       case 3:
+>        for(int i=0;i<ed.length;i++)
+bash: syntax error near unexpected token `for'
+bash-3.2$        {
+>         if(ed[i].getsalary()>=10000)
+bash: syntax error near unexpected token `>'
+bash-3.2$         ed[i].display();
+bash: syntax error near unexpected token `;'
+bash-3.2$        }
+bash: syntax error near unexpected token `}'
+bash-3.2$        break;
+bash: break: only meaningful in a `for', `while', or `until' loop
+bash-3.2$       case 4:
+>           int index;
+bash: syntax error near unexpected token `int'
+bash-3.2$           Emp t=new Emp();
+bash: syntax error near unexpected token `('
+bash-3.2$                         t=ed[0].copy();
+bash: syntax error near unexpected token `('
+bash-3.2$                         System.out.print("Enter the details to be copi ed:\n");
+bash: syntax error near unexpected token `"Enter the details to be copied:\n"'
+bash-3.2$                         index=sin.nextInt()-1;
+bash: syntax error near unexpected token `('
+bash-3.2$                         if(index>=0 && index<=ed.length);
+>                         {
+>                                 t=ed[index].copy();
+bash: syntax error near unexpected token `('
+bash-3.2$                                 System.out.print("copied\n");
+bash: syntax error near unexpected token `"copied\n"'
+bash-3.2$                                 t.display();
+bash: syntax error near unexpected token `;'
+bash-3.2$                         }
+bash: syntax error near unexpected token `}'
+bash-3.2$                         break;
+bash: break: only meaningful in a `for', `while', or `until' loop
+bash-3.2$                 case 5:
+>         {
+bash: syntax error near unexpected token `{'
+bash-3.2$         System.out.println("Exit\n");
+bash: syntax error near unexpected token `"Exit\n"'
+bash-3.2$         }
+bash: syntax error near unexpected token `}'
+bash-3.2$         break;
+bash: break: only meaningful in a `for', `while', or `until' loop
+bash-3.2$    }
+bash: syntax error near unexpected token `}'
+bash-3.2$     }while(op<5);
+bash: syntax error near unexpected token `op'
+bash-3.2$  }
+bash: syntax error near unexpected token `}'
+}bash-3.2$ }
+bash: syntax error near unexpected token `}'
+bash-3.2$ 
+bash-3.2$ bash-3.2$ cat Emp.java
+bash: bash-3.2$: command not found
+bash-3.2$ public class Emp
+bash: public: command not found
+bash-3.2$ {
+>  private String name,dept;
+>  private String eid;
+>  private String experience;
+>  private int salary;
+>  public void setEmp(int a,String x,String y,String p,String q)
+bash: syntax error near unexpected token `('
+bash-3.2$  {
+>   salary=a;
+>   eid=x;
+>   experience=y;
+>   name=p;
+>   dept=q;
+>  }
+bash-3.2$  public void display()
+bash: syntax error near unexpected token `('
+bash-3.2$  {
+>   System.out.print("eid:"+eid+"\n name:"+name+"\n dept:"+dept+"\n
+>   experience:"+experience+"\n salary:"+salary+"\n");
+bash: syntax error near unexpected token `"eid:"+eid+"\n name:"+name+"\n dept:"+dept+"\n
+  experience:"+experience+"\n salary:"+salary+"\n"'
+bash-3.2$  }
+bash: syntax error near unexpected token `}'
+bash-3.2$  public String getexperience()
+bash: syntax error near unexpected token `('
+bash-3.2$ 
+bash-3.2$  {
+> //  if(experience>5)
+bash: syntax error near unexpected token `('
+bash-3.2$   return experience;
+bash: return: experience: numeric argument required
+bash: return: can only `return' from a function or sourced script
+bash-3.2$  }
+bash: syntax error near unexpected token `}'
+bash-3.2$  public int getsalary()
+bash: syntax error near unexpected token `('
+bash-3.2$  {
+>   return salary;
+>  }
+bash: return: salary: numeric argument required
+bash: return: can only `return' from a function or sourced script
+bash-3.2$  public Emp copy()
+bash: syntax error near unexpected token `('
+bash-3.2$  {
+>   Emp temp=new Emp();
+bash: syntax error near unexpected token `('
+bash-3.2$   temp.salary=salary;
+bash: temp.salary=salary: command not found
+bash-3.2$   temp.eid=eid;
+bash: temp.eid=eid: command not found
+bash-3.2$   temp.experience=experience;
+bash: temp.experience=experience: command not found
+bash-3.2$   temp.name=name;
+bash: temp.name=name: command not found
+bash-3.2$   temp.dept=dept;
+bash: temp.dept=dept: command not found
+bash-3.2$   return temp;
+bash: return: temp: numeric argument required
+bash: return: can only `return' from a function or sourced script
+bash-3.2$  }
+bash: syntax error near unexpected token `}'
+bash-3.2$ }
+bash: syntax error near unexpected token `}'
+bash-3.2$ 
+bash-3.2$ bash-3.2$ java MyEmpApp
+bash: bash-3.2$: command not found
+bash-3.2$ Enter the number of employee
+bash: Enter: command not found
+bash-3.2$ 3
+bash: 3: command not found
+bash-3.2$ Enter the details
+bash: Enter: command not found
+bash-3.2$ Enter the employer id :
+bash: Enter: command not found
+bash-3.2$ 123
+bash: 123: command not found
+bash-3.2$ Enter the name of the employee :
+bash: Enter: command not found
+bash-3.2$ sathish
+bash: sathish: command not found
+bash-3.2$ Enter the department of the employee:
+bash: Enter: command not found
+bash-3.2$ cse
+bash: cse: command not found
+bash-3.2$ Enter the years of experience:
+bash: Enter: command not found
+bash-3.2$ 5years
+bash: 5years: command not found
+bash-3.2$ Enter the salary:
+bash: Enter: command not found
+bash-3.2$ 30000
+bash: 30000: command not found
+bash-3.2$ Enter the details
+bash: Enter: command not found
+bash-3.2$ Enter the employer id :
+bash: Enter: command not found
+bash-3.2$ 345
+bash: 345: command not found
+bash-3.2$ Enter the name of the employee :
+bash: Enter: command not found
+
+bash-3.2$ saravana
+bash: saravana: command not found
+bash-3.2$ Enter the department of the employee:
+bash: Enter: command not found
+bash-3.2$ EcE
+bash: EcE: command not found
+Enter the years of experience:bash-3.2$ Enter the years of experience:
+bash: Enter: command not found
+bash-3.2$ 6years
+bash: 6years: command not found
+bash-3.2$ Enter the salary:
+50000
+bash: Enter: command not found
+bash-3.2$ 50000
+bash: 50000: command not found
+bash-3.2$ Enter the details
+bash: Enter: command not found
+bash-3.2$ Enter the employer id :
+bash: Enter: command not found
+bash-3.2$ 456
+bash: 456: command not found
+bash-3.2$ Enter the name of the employee :
+bash: Enter: command not found
+bash-3.2$ prakash
+bash: prakash: command not found
+bash-3.2$ Enter the department of the employee:
+bash: Enter: command not found
+bash-3.2$ Mech
+bash: Mech: command not found
+bash-3.2$ Enter the years of experience:
+bash: Enter: command not found
+bash-3.2$ 10years
+bash: 10years: command not found
+bash-3.2$ Enter the salary:
+bash: Enter: command not found
+bash-3.2$ 10000
+bash: 10000: command not found
+bash-3.2$ Menu
+bash: Menu: command not found
+bash-3.2$ 1.Display all the employee details
+bash: 1.Display: command not found
+bash-3.2$ 2.Display employee experience equal to 5years
+bash: 2.Display: command not found
+bash-3.2$ 3.Display employee salary more than 10,000
+bash: 3.Display: command not found
+bash-3.2$ 4.Copy any one of employee details
+bash: 4.Copy: command not found
+bash-3.2$ 5.Exit
+bash: 5.Exit: command not found
+bash-3.2$ Enter the option
+bash: Enter: command not found
+bash-3.2$ 1
+bash: 1: command not found
+bash-3.2$  eid:123
+bash: eid:123: command not found
+bash-3.2$  name:sathish
+bash: name:sathish: command not found
+bash-3.2$  dept:cse
+bash: dept:cse: command not found
+bash-3.2$  experience:5years
+bash: experience:5years: command not found
+bash-3.2$  salary:30000
+bash: salary:30000: command not found
+bash-3.2$  eid:345
+bash: eid:345: command not found
+bash-3.2$  name:saravana
+bash: name:saravana: command not found
+bash-3.2$  dept:EcE
+bash: dept:EcE: command not found
+bash-3.2$  experience:6years
+bash: experience:6years: command not found
+bash-3.2$  salary:50000
+bash: salary:50000: command not found
+bash-3.2$  eid:456
+bash: eid:456: command not found
+bash-3.2$  name:prakash
+bash: name:prakash: command not found
+bash-3.2$  dept:Mech
+bash: dept:Mech: command not found
+bash-3.2$  experience:10years
+bash: experience:10years: command not found
+bash-3.2$  salary:10000
+bash: salary:10000: command not found
+bash-3.2$ Menu
+bash: Menu: command not found
+bash-3.2$ 1.Display all the employee details
+bash: 1.Display: command not found
+bash-3.2$ 2.Display employee experience equal to 5years
+bash: 2.Display: command not found
+bash-3.2$ 3.Display employee salary more than 10,000
+bash: 3.Display: command not found
+bash-3.2$ 4.Copy any one of employee details
+bash: 4.Copy: command not found
+bash-3.2$ 5.Exit
+bash: 5.Exit: command not found
+bash-3.2$ Enter the option
+bash: Enter: command not found
+bash-3.2$ 2
+bash: 2: command not found
+bash-3.2$  eid:123
+bash: eid:123: command not found
+bash-3.2$  name:sathish
+bash: name:sathish: command not found
+bash-3.2$  dept:cse
+bash: dept:cse: command not found
+bash-3.2$  experience:5years
+bash: experience:5years: command not found
+bash-3.2$  salary:30000
+bash: salary:30000: command not found
+bash-3.2$ Menu
+bash: Menu: command not found
+bash-3.2$ 1.Display all the employee details
+bash: 1.Display: command not found
+bash-3.2$ 2.Display employee experience equal to 5years
+bash: 2.Display: command not found
+bash-3.2$ 3.Display employee salary more than 10,000
+bash: 3.Display: command not found
+bash-3.2$ 4.Copy any one of employee details
+bash: 4.Copy: command not found
+bash-3.2$ 5.Exit
+bash: 5.Exit: command not found
+bash-3.2$ Enter the option
+bash: Enter: command not found
+bash-3.2$ 3
+bash: 3: command not found
+bash-3.2$  eid:123
+bash: eid:123: command not found
+bash-3.2$  name:sathish
+bash: name:sathish: command not found
+bash-3.2$  dept:cse
+bash: dept:cse: command not found
+bash-3.2$  experience:5years
+bash: experience:5years: command not found
+bash-3.2$  salary:30000
+bash: salary:30000: command not found
+bash-3.2$  eid:345
+bash: eid:345: command not found
+bash-3.2$  name:saravana
+bash: name:saravana: command not found
+bash-3.2$  dept:EcE
+bash: dept:EcE: command not found
+bash-3.2$  experience:6years
+bash: experience:6years: command not found
+bash-3.2$  salary:50000
+bash: salary:50000: command not found
+bash-3.2$  eid:456
+bash: eid:456: command not found
+bash-3.2$  name:prakash
+bash: name:prakash: command not found
+bash-3.2$  dept:Mech
+bash: dept:Mech: command not found
+bash-3.2$  experience:10years
+bash: experience:10years: command not found
+bash-3.2$  salary:10000
+bash: salary:10000: command not found
+bash-3.2$ Menu
+bash: Menu: command not found
+bash-3.2$ 1.Display all the employee details
+bash: 1.Display: command not found
+bash-3.2$ 2.Display employee experience equal to 5years
+bash: 2.Display: command not found
+bash-3.2$ 3.Display employee salary more than 10,000
+bash: 3.Display: command not found
+bash-3.2$ 4.Copy any one of employee details
+bash: 4.Copy: command not found
+bash-3.2$ 5.Exit
+bash: 5.Exit: command not found
+bash-3.2$ Enter the option
+bash: Enter: command not found
+bash-3.2$ 4
+bash: 4: command not found
+bash-3.2$ Enter the details to be copied:
+bash: Enter: command not found
+bash-3.2$ 1
+bash: 1: command not found
+bash-3.2$ copied
+bash: copied: command not found
+bash-3.2$  eid:123
+bash: eid:123: command not found
+bash-3.2$  name:sathish
+bash: name:sathish: command not found
+bash-3.2$  dept:cse
+bash: dept:cse: command not found
+bash-3.2$  experience:5years
+bash: experience:5years: command not found
+bash-3.2$  salary:30000
+bash: salary:30000: command not found
+bash-3.2$ Menu
+bash: Menu: command not found
+bash-3.2$ 1.Display all the employee details
+bash: 1.Display: command not found
+bash-3.2$ 2.Display employee experience equal to 5years
+bash: 2.Display: command not found
+3.Display employee salary more than 10,000
+bash-3.2$ 3.Display employee salary more than 10,000
+bash: 3.Display: command not found
+bash-3.2$ 4.Copy any one of employee details
+bash: 4.Copy: command not found
+bash-3.2$ 5.Exit
+bash: 5.Exit: command not found
+Enter the optionbash-3.2$ Enter the option
+bash: Enter: command not found
+bash-3.2$ 5
+bash: 5: command not found
+bash-3.2$ Exit
+bash: Exit: command not found
+bash-3.2$ 
+bash-3.2$ bash-3.2$ exit
+bash: bash-3.2$: command not found
+bash-3.2$ exit
+exit
+
+Script done on Sat 16 Sep 2017 12:16:19 AM IST

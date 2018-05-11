@@ -1,0 +1,156 @@
+import java.util.*;
+public class QueueApp
+{
+	public static void main(String [] args)
+	{
+		Scanner sin=new Scanner(System.in);
+		int choice1,choice,size;
+    int stuid,stuage;
+    String name;
+		do
+		{
+		System.out.println("Integer Queue - 1");
+		System.out.println("String Queue - 2 ");
+		System.out.println("Student Queue - 3 ");
+		System.out.println("Exit - 4 ");
+		choice=sin.nextInt();
+		switch(choice)
+		{
+			case 1:
+				System.out.println("Enter the size of the queue : ");
+				size=sin.nextInt();
+				Queue <Integer> q=new Queue<Integer>(size);
+				do
+				{
+					System.out.println("Enqueue - 1");
+					System.out.println("Dequeue - 2 ");
+					System.out.println("Print Queue - 3 ");
+					System.out.println("Exit - 4 ");
+					choice1=sin.nextInt();
+					switch(choice1)
+					{
+						case 1:
+							System.out.println("Enter an element to push : ");
+							if(q.enqueue(sin.nextInt()))
+								System.out.println("The element is enqueued");
+							else
+								System.out.println("Queue is Full");
+							System.out.println(q);
+							break;
+						case 2:
+							Integer a=q.dequeue();
+							if(a!=null)
+								System.out.println("Dequeued element is : "+Integer.toString(a));
+							else
+								System.out.println("Queue is EMPTY");
+							System.out.println(q);
+							break;
+						case 3:
+							System.out.println(q);
+							break;
+						case 4:
+							break;
+						default:
+							System.out.println("Enter a valid choice ");
+							break;
+					}
+				}
+				while(choice1!=4);
+				break;
+			case 2:
+				System.out.println("Enter the size of the queue : ");
+				size=sin.nextInt();
+				Queue <String> q1=new Queue<String>(size);
+				do
+				{
+					System.out.println("Enqueue - 1");
+					System.out.println("Dequeue - 2 ");
+					System.out.println("Print Queue - 3 ");
+					System.out.println("Exit - 4 ");
+					choice1=sin.nextInt();
+					switch(choice1)
+					{
+						case 1:
+							System.out.println("Enter an element to push : ");
+							if(q1.enqueue(sin.next()))
+								System.out.println("The element is enqueued");
+							else
+								System.out.println("Queue is Full");
+							System.out.println(q1);
+							break;
+						case 2:
+							String a=q1.dequeue();
+							if(a!=null)
+								System.out.println("Dequeued element is : "+a);
+							else
+								System.out.println("Queue is EMPTY");
+							System.out.println(q1);
+							break;
+						case 3:
+							System.out.println(q1);
+							break;
+						case 4:
+							break;
+						default:
+							System.out.println("Enter a valid choice ");
+							break;
+					}
+				}
+				while(choice1!=4);
+				break;
+			case 3:
+				System.out.println("Enter the size of the queue : ");
+				size=sin.nextInt();
+				Queue <Student> q2=new Queue<Student>(size);
+				do
+				{
+					System.out.println("Enqueue - 1");
+					System.out.println("Dequeue - 2 ");
+					System.out.println("Print Queue - 3 ");
+					System.out.println("Exit - 4 ");
+					choice1=sin.nextInt();
+					switch(choice1)
+					{
+						case 1:System.out.println("Enter the Student id : ");
+                   stuid=sin.nextInt();
+                   System.out.println("Enter the Student name : ");
+                   name=sin.next();
+                   System.out.println("Enter the Student Age : ");
+                   stuage=sin.nextInt();
+              Student s=new Student(stuid,name,stuage);
+							if(q2.enqueue(s))
+								System.out.println("The element is enqueued");
+							else
+								System.out.println("Queue is Full");
+							System.out.println(q2);
+							break;
+						case 2:
+							Student a=q2.dequeue();
+							if(a!=null)
+								System.out.println("Dequeued element is : "+a.toString());
+							else
+								System.out.println("Queue is EMPTY");
+							System.out.println(q2);
+							break;
+						case 3:
+              
+							System.out.println(q2);
+							break;
+						case 4:
+							break;
+						default:
+							System.out.println("Enter a valid choice ");
+							break;
+					}
+				}
+				while(choice1!=4);
+				break;
+			case 4:
+				break;
+			default:
+				System.out.println("Enter a valid choice ");
+				break;
+		};
+		}while(choice!=4);
+	}
+}

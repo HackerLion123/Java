@@ -1,0 +1,522 @@
+Script started on Friday 08 September 2017 10:15:24 AM IST
+
+package stack;
+public interface IStackADT
+{
+	int MAX_SIZE=10;
+	boolean push(int a);
+	boolean pop();
+	boolean isFull();
+	boolean isEmpty();
+	void displayStack();
+	int top();
+}
+package stack.array;
+import stack.*;
+import java.lang.StringBuilder;
+public class StackArray implements IStackADT
+{
+	int []stack;
+	int top;
+	public StackArray()
+	{
+		top=-1;
+		stack=new int[IStackADT.MAX_SIZE];
+	}
+	public boolean isFull()
+	{
+		return this.top==IStackADT.MAX_SIZE-1;
+	}
+	public boolean isEmpty()
+	{
+		return this.top==-1;
+	}
+	public int top()
+	{
+		if(!isEmpty())
+			return stack[top];
+		else
+			return -1;
+	}
+	public boolean push(int element)
+	{
+		if(!isFull())
+		{
+			top++;
+			stack[top]=element;
+			return true;
+		}
+		else
+			return false;
+	}
+	public boolean pop()
+	{
+		if(!isEmpty())
+		{
+			top--;
+			return true;
+		}
+		else
+			return false;		
+	}
+	public String toString()
+	{
+		if(isEmpty())
+			return "The Stack is Empty";
+		else
+		{
+			StringBuilder strBuild=new StringBuilder();
+			for(int i=0;i<=top;i++)
+			{
+				int temp=stack[i];
+				strBuild.append(Integer.toString(temp)+' ');
+			}
+			return strBuild.toString();
+		}
+	}
+	public void displayStack()
+	{
+		if(isEmpty())
+			System.out.println("The Stack is Empty");
+		else
+		{
+			for(int i=top;i>=0;i--)
+			{
+				System.out.println("|      |");
+				System.out.println("|  "+stack[i]+"  |");
+				System.out.println("|______|");
+			}
+		}
+	}
+}
+
+package stack.list;
+public class Node
+	{
+		int element;
+		Node next;
+		Node()
+		{
+			element=0;
+			next=null;
+		}
+		Node(int x)
+		{
+			element=x;
+			next=null;
+		}
+		public int getElement()
+		{
+			return element;
+		}
+	}
+
+package stack.list;
+import stack.*;
+import java.lang.StringBuilder;
+public class StackList implements IStackADT
+{
+	Node top;
+	int count;
+	{
+		count=0;
+	}
+	public boolean push(int x)
+	{
+		if(!isFull())
+		{
+			Node newNode=new Node(x);
+			if(isEmpty())
+			{
+				this.top=newNode;
+			}
+			else
+			{
+					newNode.next=top;
+					top=newNode;
+			}
+			count++;
+			return true;
+		}
+		else
+			return false;
+	}
+	public boolean pop()
+	{
+		if(!isEmpty())
+		{
+			Node temp=top;
+			top=top.next;
+			temp=null;
+			count--;
+			return true;
+		}
+		else
+			return false;
+	}
+	public boolean isEmpty()
+	{
+		return count==0;
+	}
+	public boolean isFull()
+	{
+		return count==IStackADT.MAX_SIZE;
+	}
+	public int top()
+	{
+		if(!isEmpty())
+		{
+			return top.element;
+		}
+		else
+		{
+			return -1;
+		}
+	}
+	public String toString()
+	{
+		if(!isEmpty())
+		{
+			StringBuilder strBuild=new StringBuilder();
+			Node temp=top;
+			while(temp!=null)
+			{
+				strBuild.append(Integer.toString(temp.element)+' ');
+				temp=temp.next;
+			}
+			return strBuild.toString();
+		}
+		else
+		{
+			return "The Stack is Empty";
+		}
+	}
+	public void displayStack()
+	{
+		if(!isEmpty())
+		{
+			Node temp=top;
+			while(temp!=null)
+			{
+				System.out.println("|      |");
+				System.out.println("|  "+temp.getElement()+"  |");
+				System.out.println("|______|");
+				temp=temp.next;
+			}
+		}
+		else
+		{
+			System.out.println("The Stack is Empty"); 
+		}
+	}
+}
+III-B@CBL019:~/Desktop/ex6_FINAL/stack$ java StackApp
+**************  STACK APP MENU  ****************
+   1  -  Array Stack  
+   2  -  List Stack  
+   Any other key to exit  
+************************************************
+ Enter the choice : 
+1
+ Stack is created 
+
+==================================
+  		1 - PUSH 					
+   		2 - POP 					
+  		3 - Get Top					
+	  	4 - Print Stack				
+  Any other key to Go to Main menu	
+==================================
+ Enter the choice : 
+23
+
+**************  STACK APP MENU  ****************
+   1  -  Array Stack  
+   2  -  List Stack  
+   Any other key to exit  
+************************************************
+ Enter the choice : 
+1
+ Stack is created 
+
+==================================
+|  		1 - PUSH 					
++  		2 - POP 					
+| 		3 - Get Top					
++ 		4 - Print Stack				
+|  Any other key to Go to Main menu	
+==================================
+ Enter the choice : 
+1
+
+ Enter the element to push : 
+34
+
+ The element is pushed
+|      |
+|  34  |
+|______|
+
+==================================
+|  		1 - PUSH 					
++  		2 - POP 					
+| 		3 - Get Top					
++ 		4 - Print Stack				
+|  Any other key to Go to Main menu	
+==================================
+ Enter the choice : 
+1
+
+ Enter the element to push : 
+56
+
+ The element is pushed
+|      |
+|  56  |
+|______|
+|      |
+|  34  |
+|______|
+
+==================================
+|  		1 - PUSH 					
++  		2 - POP 					
+| 		3 - Get Top					
++ 		4 - Print Stack				
+|  Any other key to Go to Main menu	
+==================================
+ Enter the choice : 
+1
+
+ Enter the element to push : 
+78
+
+ The element is pushed
+|      |
+|  78  |
+|______|
+|      |
+|  56  |
+|______|
+|      |
+|  34  |
+|______|
+
+==================================
+|  		1 - PUSH 					
++  		2 - POP 					
+| 		3 - Get Top					
++ 		4 - Print Stack				
+|  Any other key to Go to Main menu	
+==================================
+ Enter the choice : 
+3
+
+ The top element is 78
+
+==================================
+|  		1 - PUSH 					
++  		2 - POP 					
+| 		3 - Get Top					
++ 		4 - Print Stack				
+|  Any other key to Go to Main menu	
+==================================
+ Enter the choice : 
+2
+
+ A element is popped
+|      |
+|  56  |
+|______|
+|      |
+|  34  |
+|______|
+
+==================================
+|  		1 - PUSH 					
++  		2 - POP 					
+| 		3 - Get Top					
++ 		4 - Print Stack				
+|  Any other key to Go to Main menu	
+==================================
+ Enter the choice : 
+2
+
+ A element is popped
+|      |
+|  34  |
+|______|
+
+==================================
+|  		1 - PUSH 					
++  		2 - POP 					
+| 		3 - Get Top					
++ 		4 - Print Stack				
+|  Any other key to Go to Main menu	
+==================================
+ Enter the choice : 
+4
+
+|      |
+|  34  |
+|______|
+
+==================================
+|  		1 - PUSH 					
++  		2 - POP 					
+| 		3 - Get Top					
++ 		4 - Print Stack				
+|  Any other key to Go to Main menu	
+==================================
+ Enter the choice : 
+2
+
+ A element is popped
+The Stack is Empty
+
+==================================
+|  		1 - PUSH 					
++  		2 - POP 					
+| 		3 - Get Top					
++ 		4 - Print Stack				
+|  Any other key to Go to Main menu	
+==================================
+ Enter the choice : 
+2
+
+ Stack is Empty, Stack Underflow
+
+==================================
+|  		1 - PUSH 					
++  		2 - POP 					
+| 		3 - Get Top					
++ 		4 - Print Stack				
+|  Any other key to Go to Main menu	
+==================================
+ Enter the choice : 
+6
+
+**************  STACK APP MENU  ****************
+   1  -  Array Stack  
+   2  -  List Stack  
+   Any other key to exit  
+************************************************
+ Enter the choice : 
+2
+ Stack is created 
+
+==================================
+|  		1 - PUSH 						 
++  		2 - POP 						 
+| 		3 - Get Top						 
++ 		4 - Print Stack					 
+|  Any other key to Go to Main menu		 
+==================================
+ Enter the choice : 
+1
+
+ Enter the element to push : 
+56
+
+ The element is pushed
+|      |
+|  56  |
+|______|
+
+==================================
+|  		1 - PUSH 						 
++  		2 - POP 						 
+| 		3 - Get Top						 
++ 		4 - Print Stack					 
+|  Any other key to Go to Main menu		 
+==================================
+ Enter the choice : 
+1
+
+ Enter the element to push : 
+78
+
+ The element is pushed
+|      |
+|  78  |
+|______|
+|      |
+|  56  |
+|______|
+
+==================================
+|  		1 - PUSH 						 
++  		2 - POP 						 
+| 		3 - Get Top						 
++ 		4 - Print Stack					 
+|  Any other key to Go to Main menu		 
+==================================
+ Enter the choice : 
+3
+
+ The top element is 78
+
+==================================
+|  		1 - PUSH 						 
++  		2 - POP 						 
+| 		3 - Get Top						 
++ 		4 - Print Stack					 
+|  Any other key to Go to Main menu		 
+==================================
+ Enter the choice : 
+4
+
+|      |
+|  78  |
+|______|
+|      |
+|  56  |
+|______|
+==================================
+|  		1 - PUSH 						 
++  		2 - POP 						 
+| 		3 - Get Top						 
++ 		4 - Print Stack					 
+|  Any other key to Go to Main menu		 
+==================================
+ Enter the choice : 
+2
+
+ A element is popped
+|      |
+|  56  |
+|______|
+
+==================================
+|  		1 - PUSH 						 
++  		2 - POP 						 
+| 		3 - Get Top						 
++ 		4 - Print Stack					 
+|  Any other key to Go to Main menu		 
+==================================
+ Enter the choice : 
+3
+
+ The top element is 56
+
+==================================
+|  		1 - PUSH 						 
++  		2 - POP 						 
+| 		3 - Get Top						 
++ 		4 - Print Stack					 
+|  Any other key to Go to Main menu		 
+ Enter the choice : 
+7
+
+**************  STACK APP MENU  ****************
+   1  -  Array Stack  
+   2  -  List Stack  
+   Any other key to exit  
+************************************************
+ Enter the choice : 
+8
+ ------------ T H A N K  Y O U --------------
+III-B@CBL019:~/Desktop/ex6_FINAL/stack$ exit
+exit
+
+Script done on Friday 08 September 2017 10:16:30 AM IST

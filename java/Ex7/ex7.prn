@@ -1,0 +1,557 @@
+Script started on Fri 22 Sep 2017 11:28:42 AM IST
+bash-3.2$ cat Person.java 
+import java.util.Date;
+public class Person
+{
+	private int pid;
+	private String name;
+	private Date dateOfBirth;
+	private double salary;
+	public Person() {};
+	public Person(int pid,String name,Date dateOfBirth,double Salary)
+	{
+		this.pid=pid;
+		this.name=name;
+		this.dateOfBirth=dateOfBirth;
+		this.salary=salary;
+	}
+	public boolean equals(Object obj)
+	{
+		if(this==obj)
+			return true;
+		if(obj==null)
+			return false;
+		if(this.getClass()!=obj.getClass())
+			return false;
+		Person temp=(Person)obj;
+		return this.pid==temp.pid &&
+					 this.name.equals(temp.name) &&
+					 this.dateOfBirth.equals(temp.dateOfBirth) &&
+					 this.salary==temp.salary;
+	}
+	public String toString()
+	{
+		String temp=this.getClass().getName();
+		temp=temp+"[ ";
+		temp=temp+"pid = "+this.pid+" , ";
+		temp=temp+"name = "+this.name+" , ";
+		temp=temp+"dateOfJoinig = "+this.dateOfBirth+" , ";
+		temp=temp+"salary = "+this.salary;
+		temp=temp+" ]";
+		return temp;
+	}
+}
+bash-3.2$ cat Teacher.java 
+import java.util.Arrays;
+import java.util.Date;
+public class Teacher extends Person
+{
+	private String [] subjectTaught;
+	private int experience;
+	public Teacher() {}
+	public Teacher(int pid,String name,Date dateOfBirth,double salary,String 
+[] subjectTaught,int experience)
+	{
+		super(pid,name,dateOfBirth,salary);
+		this.subjectTaught=subjectTaught;
+		this.experience=experience;
+	}
+	public boolean equals(Object obj)
+	{
+		if(super.equals(obj))
+		{
+		Teacher temp=(Teacher)obj;
+		return Arrays.equals(subjectTaught,temp.subjectTaught) &&
+				experience==temp.experience;
+		}
+		else
+			return false;
+	}
+	public String toString()
+	{
+		String temp=super.toString()+" "+this.getClass().getName();
+		temp=temp+"[ ";
+		temp=temp+"subjectTaught = "+Arrays.toString(subjectTaught)+" , ";
+		temp=temp+"experience = "+this.experience;
+		temp=temp+" ]";
+		return temp;
+	}
+}
+bash-3.2$ cat PersonApp.java 
+import java.util.Date;
+import java.util.Scanner;
+import java.text.DateFormat;
+public class PersonApp
+{
+	public static void main(String [] args) throws Exception
+	{
+		int pid;
+		String name;
+		Date dateOfBirth;
+		double salary;
+		String [] subjectTaught;
+		int experience;
+		int choice;
+		Scanner scan=new Scanner(System.in);
+		System.out.println("Enter the number of person : ");
+		int size = scan.nextInt();
+		Person []fac=new Person[size];
+		int i,j;
+		for(i=0;i<fac.length;i++)
+		{
+			System.out.print("Enter the id of person "+(i+1)+" : ");
+			pid=scan.nextInt();
+			System.out.print("Enter the name of person "+(i+1)+" : ");
+			name=scan.next();
+			System.out.print("Enter the dateOfBirth of person "+(i+1)+" : ");
+			String []dt=scan.next().split("/");
+			int year,day,month;
+			year=Integer.parseInt(dt[2])-1900;
+			month=Integer.parseInt(dt[1]);
+			day=Integer.parseInt(dt[0]);
+			/*day=scan.nextInt();
+			month=scan.nextInt();
+			year=scan.nextInt();*/
+			dateOfBirth=new Date(year,month,day);
+			System.out.print("Enter the salary of person "+(i+1)+" : ");
+			salary=scan.nextDouble();
+			System.out.print("Is the person "+(i+1)+" is a Teacher (y/n): ");
+			char ch=scan.next().charAt(0);
+			if(ch=='y')
+			{
+				System.out.print("Enter the subjectTaughts : ");
+				String qual=scan.next();
+				subjectTaught=qual.split(",");
+				System.out.print("Enter the experience : ");
+				experience=scan.nextInt();
+				fac[i]=new Teacher(pid,name,dateOfBirth,salary,subjectTaught,
+
+experience);
+			}
+			else
+			{
+				fac[i]=new Person(pid,name,dateOfBirth,salary);
+			}
+		}
+		do
+		{
+			System.out.println("\tMENU ");
+			System.out.println("1 - check for equality");
+			System.out.println("2 - Print using toString");
+			System.out.println("3 - Exit");
+			System.out.println("");
+			choice=scan.nextInt();
+			switch(choice)
+			{
+				case 1:
+					System.out.print("Enter the index of two person to check :");
+					i=scan.nextInt();
+					j=scan.nextInt();
+					if(i>=0&&i<fac.length)
+					{
+						if(j>=0&&j<fac.length)
+						{
+							if(fac[i].equals(fac[j]))
+								System.out.println("Both refers to a same person ");
+							else
+								System.out.println("Both are not equal");
+						}
+						else
+						{
+							System.out.println("Second index is invalid");
+						}
+					}
+					else
+						{
+							System.out.println("first index is invalid");
+						}
+					break;
+				case 2:
+					System.out.print("Enter the id of the person :");
+					i=scan.nextInt();
+					if(i>=0&&i<fac.length)
+						System.out.println(fac[i]);
+					else
+						System.out.println("invalid index");
+					break;
+				case 3:
+					break;
+				default:
+					System.out.println("Invalid choice");
+					break;
+			}
+		}while(choice!=3);
+	}
+}
+bash-3.2$ java PersonApp
+Enter the number of person : 2
+Enter the id of person 1 : 123
+Enter the name of person : sathish
+Enter the dateOfBirth of person 1 : 12/12/12
+Enter the salary of person 1 : 45000
+Is the person 1 is a Teacher (y/n): y
+Enter the subjectTaughts : maths
+Enter the experience : 5
+Enter the id of person 2 : 452
+Enter the name of person 2 : sathish
+Enter the dateOfBirth of person 2 : 12/12/12
+Enter the salary of person 2 : 482200
+Is the person 2 is a Teacher (y/n): n
+	MENU 
+1 - check for equality
+2 - Print using toString
+3 - Exit
+
+1
+Enter the index of two person to check :0
+1
+Both are not equal
+	MENU 
+1 - check for equality
+2 - Print using toString
+3 - Exit
+
+2
+Enter the id of the person :0
+Teacher[ pid = 123 , name = sathish, dateOfJoinig = Thu Jan 12 00:00:00 
+IST 13 , salary = 0.0 ] Teacher[ subjectTaught = [maths] , experience = 5 ]
+	MENU 
+1 - check for equality
+2 - Print using toString
+3 - Exit
+
+2
+Enter the id of the person :1
+Person[ pid = 452 , name = sathish, dateOfJoinig = Thu Jan 12 00:00:00 
+IST 13 , salary = 0.0 ]
+	MENU 
+1 - check for equality
+2 - Print using toString
+3 - Exit
+
+3
+bash-3.2$ cat analyze/reflection/Analyze.java 
+package reflection;
+
+import java.lang.reflect.*;
+import java.util.*;
+
+public class Analyze
+{
+  public static void analyzeClass(String classStr)
+  {
+	try
+	{
+		Class cl=Class.forName(classStr);
+		Class supercl=cl.getSuperclass();
+		String modifiers=Modifier.toString(cl.getModifiers());
+		if(modifiers.length()>0)
+		  System.out.print(modifiers+" ");
+		System.out.print("class "+cl.getName());
+		if(supercl!=null && supercl!=Object.class)
+		  System.out.print(" extends "+supercl.getName());
+		System.out.print("\n{\n");
+		printConstructors(cl);
+		System.out.print("\n");
+		printMethods(cl);
+		System.out.print("\n");
+		printFields(cl);
+		System.out.println("}");
+	}
+	catch(ClassNotFoundException e)
+	{
+		e.printStackTrace();
+	}
+  }
+  public static void printConstructors(Class cl)
+  {
+	  Constructor[] constructors=cl.getDeclaredConstructors();
+	  for(Constructor c:constructors)
+      {
+		String name=c.getName();
+		System.out.print("  ");
+		String modifiers=Modifier.toString(c.getModifiers());
+		if(modifiers.length()>0)
+		  System.out.print(modifiers+" ");
+		System.out.print(name+"(");
+		Class[] paramTypes=c.getParameterTypes();
+		for(int j=0;j<paramTypes.length;j++)
+		{
+		  if(j>0)
+           System.out.print(", ");
+          System.out.print(paramTypes[j].getName());	   
+		}
+		System.out.println(");");
+	  }
+  }
+  public static void printMethods(Class cl)
+  {
+	Method[] methods=cl.getDeclaredMethods();
+    for(Method m:methods)
+    {
+	  Class retType=m.getReturnType();
+	  String name=m.getName();
+	  System.out.print(" ");
+	  String modifiers=Modifier.toString(m.getModifiers());
+	  if(modifiers.length()>0)
+	    System.out.print(modifiers+" ");
+	  System.out.print(retType.getName()+" "+name+"(");
+	  Class []paramTypes=m.getParameterTypes();
+	  for(int j=0;j<paramTypes.length;j++)
+		{
+		  if(j>0)
+           System.out.print(", ");
+		   System.out.print(paramTypes[j].getName());
+		}
+		System.out.println(");");
+	}		
+  }
+  public static void printFields(Class cl)
+  {
+	Field[] fields=cl.getDeclaredFields();
+    for(Field f:fields)
+    {
+	  Class type=f.getType();
+	  String name=f.getName();
+	  System.out.print(" ");
+	  String modifiers=Modifier.toString(f.getModifiers());
+	  if(modifiers.length()>0)
+	    System.out.print(modifiers+" ");
+	  System.out.println(type.getName()+" "+name+";");
+	}		
+  }
+}bash-3.2$ cat analyze/AnalyzeApp.java 
+import java.lang.reflect.*;
+import java.util.*;
+import reflection.*;
+
+public class AnalyzeApp
+{
+	public static void main(String[] args)
+	{
+	  String name;
+	  if(args.length>0)
+		  name=args[0];
+	  else
+	  {
+		  Scanner sin=new Scanner(System.in);
+		  System.out.print("Enter the class name : ");
+		  name=sin.next();
+	  }
+	  Analyze.analyzeClass(name);
+	}
+}
+bash-3.2$ cd analyze/
+bash-3.2$ java AnalyzeApp
+Enter the class name : java.util.Scanner
+public final class java.util.Scanner
+{
+  private java.util.Scanner(java.lang.Readable, java.util.regex.Pattern);
+  public java.util.Scanner(java.lang.Readable);
+  public java.util.Scanner(java.io.InputStream);
+  public java.util.Scanner(java.io.InputStream, java.lang.String);
+  public java.util.Scanner(java.io.File);
+  public java.util.Scanner(java.io.File, java.lang.String);
+  public java.util.Scanner(java.lang.String);
+  public java.util.Scanner(java.nio.channels.ReadableByteChannel);
+  public java.util.Scanner(java.nio.channels.ReadableByteChannel,
+ java.lang.String);
+
+ public java.lang.String toString();
+ public boolean hasNext();
+ public boolean hasNext(java.lang.String);
+ public boolean hasNext(java.util.regex.Pattern);
+ public java.lang.String next();
+ public java.lang.String next(java.lang.String);
+ public java.lang.String next(java.util.regex.Pattern);
+ public volatile java.lang.Object next();
+ public void remove();
+ public void close();
+ public java.util.Scanner reset();
+ public int nextInt();
+ public int nextInt(int);
+ public double nextDouble();
+ public long nextLong();
+ public long nextLong(int);
+ public java.util.Scanner skip(java.util.regex.Pattern);
+ public java.util.Scanner skip(java.lang.String);
+ private void ensureOpen();
+ public java.util.Locale locale();
+ public java.util.regex.MatchResult match();
+ private static java.util.regex.Pattern boolPattern();
+ private void buildFloatAndDecimalPattern();
+ private java.lang.String buildIntegerPatternString();
+ private void cacheResult();
+ private void cacheResult(java.lang.String);
+ private void clearCaches();
+ private java.util.regex.Pattern decimalPattern();
+ public java.util.regex.Pattern delimiter();
+ public java.lang.String findInLine(java.lang.String);
+ public java.lang.String findInLine(java.util.regex.Pattern);
+ private java.lang.String findPatternInBuffer(java.util.regex.Pattern, int);
+ public java.lang.String findWithinHorizon(java.lang.String, int);
+ public java.lang.String findWithinHorizon(java.util.regex.Pattern, int);
+ private java.util.regex.Pattern floatPattern();
+ private java.lang.String getCachedResult();
+ private java.lang.String getCompleteTokenInBuffer(java.util.regex.Pattern);
+ public boolean hasNextBigDecimal();
+ public boolean hasNextBigInteger();
+ public boolean hasNextBigInteger(int);
+ public boolean hasNextBoolean();
+ public boolean hasNextByte();
+ public boolean hasNextByte(int);
+ public boolean hasNextDouble();
+ public boolean hasNextFloat();
+ public boolean hasNextInt();
+ public boolean hasNextInt(int);
+ public boolean hasNextLine();
+ public boolean hasNextLong();
+ public boolean hasNextLong(int);
+ public boolean hasNextShort();
+ public boolean hasNextShort(int);
+ private boolean hasTokenInBuffer();
+ private java.util.regex.Pattern integerPattern();
+ public java.io.IOException ioException();
+ private static java.util.regex.Pattern linePattern();
+ private static java.lang.Readable makeReadable(java.io.InputStream,
+ java.lang.String);
+ private static java.lang.Readable makeReadable(java.nio.channels.
+ReadableByteChannel);
+ private static java.lang.Readable makeReadable(java.nio.channels.
+ReadableByteChannel, java.lang.String);
+ private boolean makeSpace();
+ private java.lang.String matchPatternInBuffer(java.util.regex.Pattern);
+ public java.math.BigDecimal nextBigDecimal();
+ public java.math.BigInteger nextBigInteger();
+ public java.math.BigInteger nextBigInteger(int);
+ public boolean nextBoolean();
+ public byte nextByte();
+ public byte nextByte(int);
+ public float nextFloat();
+ public java.lang.String nextLine();
+ public short nextShort();
+ public short nextShort(int);
+ private java.lang.String processFloatToken(java.lang.String);
+ private java.lang.String processIntegerToken(java.lang.String);
+ public int radix();
+ private void readInput();
+ private void revertState();
+ private boolean revertState(boolean);
+ private void saveState();
+ private static java.util.regex.Pattern separatorPattern();
+ private void setRadix(int);
+ private void throwFor();
+ private void translateSavedIndexes(int);
+ public java.util.Scanner useDelimiter(java.util.regex.Pattern);
+ public java.util.Scanner useDelimiter(java.lang.String);
+ public java.util.Scanner useLocale(java.util.Locale);
+ public java.util.Scanner useRadix(int);
+ private void useTypeCache();
+
+ private java.nio.CharBuffer buf;
+ private static final int BUFFER_SIZE;
+ private int position;
+ private java.util.regex.Matcher matcher;
+ private java.util.regex.Pattern delimPattern;
+ private java.util.regex.Pattern hasNextPattern;
+ private int hasNextPosition;
+ private java.lang.String hasNextResult;
+ private java.lang.Readable source;
+ private boolean sourceClosed;
+ private boolean needInput;
+ private boolean skipped;
+ private int savedScannerPosition;
+ private java.lang.Object typeCache;
+ private boolean matchValid;
+ private boolean closed;
+ private int radix;
+ private int defaultRadix;
+ private java.util.Locale locale;
+ private sun.misc.LRUCache patternCache;
+ private java.io.IOException lastException;
+ private static java.util.regex.Pattern WHITESPACE_PATTERN;
+ private static java.util.regex.Pattern FIND_ANY_PATTERN;
+ private static java.util.regex.Pattern NON_ASCII_DIGIT;
+ private java.lang.String groupSeparator;
+ private java.lang.String decimalSeparator;
+ private java.lang.String nanString;
+ private java.lang.String infinityString;
+ private java.lang.String positivePrefix;
+ private java.lang.String negativePrefix;
+ private java.lang.String positiveSuffix;
+ private java.lang.String negativeSuffix;
+ private static volatile java.util.regex.Pattern boolPattern;
+ private static final java.lang.String BOOLEAN_PATTERN;
+ private java.util.regex.Pattern integerPattern;
+ private java.lang.String digits;
+ private java.lang.String non0Digit;
+ private int SIMPLE_GROUP_INDEX;
+ private static volatile java.util.regex.Pattern separatorPattern;
+ private static volatile java.util.regex.Pattern linePattern;
+ private static final java.lang.String LINE_SEPARATOR_PATTERN;
+ private static final java.lang.String LINE_PATTERN;
+ private java.util.regex.Pattern floatPattern;
+ private java.util.regex.Pattern decimalPattern;
+}
+bash-3.2$ java AnalyzeApp
+Enter the class name : java.lang.System
+public final class java.lang.System
+{
+  private java.lang.System();
+
+ public static void exit(int);
+ public static void runFinalizersOnExit(boolean);
+ private static void initializeSystemClass();
+ public static java.lang.String setProperty(java.lang.String, java.
+lang.String);
+ public static java.lang.String getProperty(java.lang.String);
+ public static java.lang.String getProperty(java.lang.String, java.
+lang.String);
+ public static native int identityHashCode(java.lang.Object);
+ public static native long currentTimeMillis();
+ public static native long nanoTime();
+ public static native void arraycopy(java.lang.Object, int, java.lang.
+Object, int, int);
+ static java.lang.Class getCallerClass();
+ private static native void registerNatives();
+ public static java.lang.SecurityManager getSecurityManager();
+ public static void load(java.lang.String);
+ public static void loadLibrary(java.lang.String);
+ public static native java.lang.String mapLibraryName(java.lang.String);
+ private static void checkIO();
+ private static void checkKey(java.lang.String);
+ public static java.lang.String clearProperty(java.lang.String);
+ public static java.io.Console console();
+ public static void gc();
+ public static java.util.Properties getProperties();
+ public static java.lang.String getenv(java.lang.String);
+ public static java.util.Map getenv();
+ public static java.nio.channels.Channel inheritedChannel();
+ private static native java.util.Properties initProperties(java.util
+.Properties);
+ private static java.io.InputStream nullInputStream();
+ private static java.io.PrintStream nullPrintStream();
+ public static void runFinalization();
+ public static void setErr(java.io.PrintStream);
+ private static native void setErr0(java.io.PrintStream);
+ public static void setIn(java.io.InputStream);
+ private static native void setIn0(java.io.InputStream);
+ private static void setJavaLangAccess();
+ public static void setOut(java.io.PrintStream);
+ private static native void setOut0(java.io.PrintStream);
+ public static void setProperties(java.util.Properties);
+ public static void setSecurityManager(java.lang.SecurityManager);
+ private static synchronized void setSecurityManager0(java.lang.
+SecurityManager);
+
+ public static final java.io.InputStream in;
+ public static final java.io.PrintStream out;
+ public static final java.io.PrintStream err;
+ private static volatile java.lang.SecurityManager security;
+ private static volatile java.io.Console cons;
+ private static java.util.Properties props;
+}
+bash-3.2$ exit
+exit
+
+Script done on Fri 22 Sep 2017 11:32:28 AM IST

@@ -1,0 +1,101 @@
+Script started on Fri 28 Jul 2017 12:26:15 PM IST
+bash-3.2$ cat ToUpper.java
+import java.util.*;
+import java.io.*;
+class ToUpper
+{
+	public static void main(String [] arg) throws FileNotFoundException
+	{
+		Scanner sin=new Scanner(System.in);
+		System.out.println("Enter the source file");
+		String source=sin.next();
+		System.out.println("Enter the destination file");
+		String descination=sin.next();
+		File f1=new File(source);
+		Scanner fin=new Scanner(f1);
+		File f2=new File(descination);
+		Scanner finn=new Scanner(f2);
+		PrintWriter pw= new PrintWriter(f2);
+		String str;
+		while(fin.hasNextLine())
+		{
+			str=fin.nextLine();
+			for( int i=0;i<arg.length;i++)
+			{
+					str=str.replace(arg[i],arg[i].toUpperCase());
+			}
+			pw.write(str);
+			pw.write("\n");
+							
+		}
+		pw.close();
+		System.out.println("Copied");
+		
+	}
+}
+bash-3.2$ javac ToUpper.java
+bash-3.2$ java ToUpper
+Enter the source file
+copy.java
+Enter the destination file
+s1.txt
+Copied
+bash-3.2$ java ToUpper public
+Enter the source file
+copy.java
+Enter the destination file
+sample.txt
+Copied
+bash-3.2$ cat sample.txt
+import java.util.*;
+import java.io.*;
+PUBLIC class MyCopyApp
+{
+	PUBLIC static void main(String [] args) throws FileNotFoundException
+	{
+		Scanner scan=new Scanner(System.in);
+		System.out.println("Enter source file name : ");
+		String source=scan.next();
+		System.out.println("Enter destination file name : ");
+		String destination=scan.next();
+		try
+		{
+			File sourceFile=new File(source);
+			Scanner fileScan=new Scanner(sourceFile);
+			File destinationFile=new File(destination);
+			PrintWriter fileWrite=new PrintWriter(destinationFile);
+			while(fileScan.hasNext())
+			{
+				String word=new String();
+				String buffer=fileScan.nextLine();
+				StringTokenizer st=new StringTokenizer(buffer," ",true);
+				while(st.hasMoreTokens())
+				{
+					word=st.nextToken();
+					for(int i=0;i<args.length;i++)
+					{
+						if(word.equals(args[i]))
+						{
+							word=word.toUpperCase();
+							break;
+						}
+					}
+					fileWrite.write(word);
+				}
+				fileWrite.write("\n");
+			}
+			fileWrite.close();
+			scan.close();
+			fileScan.close();
+			System.out.println("file is copied ");
+		}
+		catch(FileNotFoundException e)
+		{
+			System.out.println("Exception occured");
+		}
+	}
+}
+bash-3.2$ exit
+exit
+
+

@@ -1,0 +1,77 @@
+interface IStack
+{
+	/** variable is public static by default */
+	int MAX_SIZE = 10;
+	/** Functions are abstract public by default */
+	void push(int a);
+	int pop();
+	boolean isFull();
+	boolean isEmpty();
+	int currentElement();
+}
+
+class StackArray{
+	private int []array;
+	private int top;
+
+	public StackArray(){
+		array = new array[MAX_SIZE];
+		top = -1;
+	}	
+
+	public int currentElement(){
+		if(isEmpty())
+			System.out.println("Stack is Empty ");
+		else{
+				return array[top];
+		}
+	}
+
+	public boolean isFull(){
+			return top == MAX_SIZE-1;
+	}
+	
+	public boolean isEmpty(){
+			return top == -1;
+	}
+
+	public void push(int a){
+			top++;
+			array[top] = a;
+	}
+
+	public int pop(){
+			return array[top--];
+	}
+
+}
+
+class Stacklist{
+		private top;
+		private class Node{
+				private int element;
+				Node next = new Node();
+		}
+
+		public Stacklist(){
+				top = -1;
+				Node head = new Node();
+		}
+
+		public void push(int a){
+				
+		}
+            
+      public boolean isFull(){
+			return top == MAX_SIZE-1;
+		}
+	
+		public boolean isEmpty(){
+			return top == -1;
+		}
+
+		public 
+		
+}
+
+

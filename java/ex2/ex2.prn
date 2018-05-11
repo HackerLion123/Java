@@ -1,0 +1,325 @@
+script started on Thu 27 Jul 2017 09:33:23 PM IST
+bash-3.2$ cat Papulation.java
+import java.util.Arrays;
+import java.util.Scanner;
+public class Papulation
+{
+ public static void main(String[] args)
+ {
+  int No_State,No_District,No_City;
+  Scanner p=new Scanner(System.in);
+  System.out.print("Enter the number of states:\n");
+  No_State=p.nextInt();
+  System.out.print("Enter the number of districts:\n");
+  No_District=p.nextInt();
+  System.out.print("Enter the number of cities:\n");
+  No_City=p.nextInt();
+  int population[][][]=new int[No_State][No_District][No_City];
+  for(int i=0;i<No_State;i++)
+    for(int j=0;j<No_District;j++)
+      for(int k=0;k<No_City;k++)
+        {
+         System.out.println("Enter the population of 
+         "+i+"th state "+j+"th district "+k+"th city:");
+         population[i][j][k]=p.nextInt();
+        }
+  System.out.println("The population of all cities are:");
+  System.out.println(Arrays.deepToString(population));
+  System.out.println("The populations of all states are:");
+  int result=0;
+  for(int i=0;i<No_State;i++)
+  {
+    for(int j=0;j<No_District;j++)
+      for(int k=0;k<No_City;k++)
+        result+=population[i][j][k];
+    System.out.println("The population of state "+i+" is "+result);
+    result=0;
+
+    }
+  }
+}
+
+
+bash-3.2$ java Papulation
+Enter the number of states:
+2
+Enter the number of districts:
+2
+Enter the number of cities:
+2
+Enter the population of 0th state 0th district 0th city:
+20
+Enter the population of 0th state 0th district 1th city:
+30
+Enter the population of 0th state 1th district 0th city:
+40
+Enter the population of 0th state 1th district 1th city:
+50
+Enter the population of 1th state 0th district 0th city:
+60
+Enter the population of 1th state 0th district 1th city:
+70
+Enter the population of 1th state 1th district 0th city:
+40
+Enter the population of 1th state 1th district 1th city:
+90
+The population of all cities are:
+[[[20, 30], [40, 50]], [[60, 70], [40, 90]]]
+The populations of all states are:
+The population of state 0 is 140
+The population of state 1 is 260
+bash-3.2$ cat MyEmpApp.java
+import java.util.Scanner;
+public class MyEmpApp
+{
+ public static void main(String[]arg)
+ {
+   Emp[] ed;
+   Scanner sin=new Scanner(System.in);
+   System.out.print("Enter the number of employee\n");
+   int n=sin.nextInt();
+   ed=new Emp[n];
+   String x;
+   String y;
+   String p,q;
+   int a;
+   for(int i=0;i<ed.length;i++)
+   {
+    System.out.print("Enter the details\n");
+    System.out.println("Enter the employer id :");
+    x=sin.next();
+    System.out.println("Enter the name of the employee :");
+    p=sin.next();
+    System.out.println("Enter the department of the employee:");
+    q=sin.next();
+    System.out.println("Enter the years of experience:");
+    y=sin.next();
+    System.out.println("Enter the salary:");
+    a=sin.nextInt();
+    ed[i]=new Emp();
+    ed[i].setEmp(a,x,y,p,q);
+   }
+   int op;
+   do
+   {
+     System.out.print("Menu\n");
+     System.out.print("1.Display all the employee details\n
+		 2.Display employee experience equal to 5years\n 
+     3.Display employee salary more than 10,000\n  
+     4.Copy any one of employee details\n5.Exit\n");
+     System.out.print("Enter the option\n");
+     op=sin.nextInt();
+     switch(op)
+     { 
+      case 1:
+       for(int i=0;i<ed.length;i++)
+      {
+       ed[i].display();
+      }
+      break;
+      case 2:
+       for(int i=0;i<ed.length;i++)
+       {
+         if("5years".equals(ed[i].getexperience())
+         ed[i].display();
+         //ed[i].getexperience();
+       }
+       break;
+      case 3:
+       for(int i=0;i<ed.length;i++)
+       {
+        if(ed[i].getsalary()>=10000)
+        ed[i].display();
+       }
+       break;
+      case 4:
+          int index;
+          Emp t=new Emp();
+    			t=ed[0].copy();
+    			System.out.print("Enter the details to be copied:\n");
+    			index=sin.nextInt()-1;
+    			if(index>=0 && index<=ed.length);
+    			{
+    				t=ed[index].copy();
+    				System.out.print("copied\n");
+    				t.display();
+    			}
+    			break;
+  	 	case 5:
+     	{	
+      	System.out.println("Exit\n");
+     	}
+     	break;
+   }
+    }while(op<5);
+ }
+}
+
+bash-3.2$ cat Emp.java
+public class Emp
+{
+ private String name,dept;
+ private String eid;
+ private String experience;
+ private int salary;
+ public void setEmp(int a,String x,String y,String p,String q)
+ {
+  salary=a;
+  eid=x;
+  experience=y;
+  name=p;
+  dept=q;
+ }
+ public void display()
+ {
+  System.out.print("eid:"+eid+"\n name:"+name+"\n dept:"+dept+"\n 
+  experience:"+experience+"\n salary:"+salary+"\n");
+ }
+ public String getexperience()
+
+ {
+//  if(experience>5)
+  return experience;
+ }
+ public int getsalary()
+ {
+  return salary;
+ }
+ public Emp copy()
+ {
+  Emp temp=new Emp();
+  temp.salary=salary;
+  temp.eid=eid;
+  temp.experience=experience;
+  temp.name=name;
+  temp.dept=dept;
+  return temp;
+ }
+}
+
+bash-3.2$ java MyEmpApp
+Enter the number of employee
+3
+Enter the details
+Enter the employer id :
+123
+Enter the name of the employee :
+sathish
+Enter the department of the employee:
+cse
+Enter the years of experience:
+5years
+Enter the salary:
+30000
+Enter the details
+Enter the employer id :
+345
+Enter the name of the employee :
+saravana
+Enter the department of the employee:
+EcE
+Enter the years of experience:
+6years
+Enter the salary:
+50000
+Enter the details
+Enter the employer id :
+456
+Enter the name of the employee :
+prakash
+Enter the department of the employee:
+Mech
+Enter the years of experience:
+10years
+Enter the salary:
+10000
+Menu
+1.Display all the employee details
+2.Display employee experience equal to 5years
+3.Display employee salary more than 10,000
+4.Copy any one of employee details
+5.Exit
+Enter the option
+1
+ eid:123
+ name:sathish
+ dept:cse
+ experience:5years
+ salary:30000
+ eid:345
+ name:saravana
+ dept:EcE
+ experience:6years
+ salary:50000
+ eid:456
+ name:prakash
+ dept:Mech
+ experience:10years
+ salary:10000
+Menu
+1.Display all the employee details
+2.Display employee experience equal to 5years
+3.Display employee salary more than 10,000
+4.Copy any one of employee details
+5.Exit
+Enter the option
+2
+ eid:123
+ name:sathish
+ dept:cse
+ experience:5years
+ salary:30000
+Menu
+1.Display all the employee details
+2.Display employee experience equal to 5years
+3.Display employee salary more than 10,000
+4.Copy any one of employee details
+5.Exit
+Enter the option
+3
+ eid:123
+ name:sathish
+ dept:cse
+ experience:5years
+ salary:30000
+ eid:345
+ name:saravana
+ dept:EcE
+ experience:6years
+ salary:50000
+ eid:456
+ name:prakash
+ dept:Mech
+ experience:10years
+ salary:10000
+Menu
+1.Display all the employee details
+2.Display employee experience equal to 5years
+3.Display employee salary more than 10,000
+4.Copy any one of employee details
+5.Exit
+Enter the option
+4
+Enter the details to be copied:
+1
+copied
+ eid:123
+ name:sathish
+ dept:cse
+ experience:5years
+ salary:30000
+Menu
+1.Display all the employee details
+2.Display employee experience equal to 5years
+3.Display employee salary more than 10,000
+4.Copy any one of employee details
+5.Exit
+Enter the option
+5
+Exit
+
+bash-3.2$ exit
+exit
+
+Script done on Thu 27 Jul 2017 09:40:21 PM IST
+

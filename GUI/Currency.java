@@ -1,0 +1,127 @@
+import java.awt.*;
+import java.awt.event.*;
+import java.applet.*;
+/*
+<applet code = Currency.class width = 430 height = 500></applet> 
+*/
+
+public class Currency extends Applet implements MouseListener,TextListener{
+	Label l1,l2,l3,l4;
+	Button b1;
+	TextField t1,t2,t3;
+	GridLayout gl,gl2;
+	Panel p1,p2,p3;
+	Choice cb,cb2;
+	String s;
+	Checkbox rb1,rb2,rb3,rb4,acc;
+	CheckboxGroup rbg;
+
+	public void init(){
+		//create a panel and provide a layout
+		gl = new GridLayout(7,2,2,4);
+		gl2 = new GridLayout(1,2,2,4);
+		p1 = new Panel(gl);
+		p2 = new Panel(gl2);
+		p3 = new Panel(gl2);
+
+		//create applet components
+		l1 = new Label("Money");
+		t1 = new TextField(25);
+		l2 = new Label("Password");
+		t2 = new TextField(25);
+		l3 = new Label("Covert from : ");
+		l4 = new Label("Convert To : ");
+		rbg = new CheckboxGroup();
+		rb1 = new Checkbox("Black",rbg,false);
+		rb2 = new Checkbox("White",rbg,false);
+		rb3 = new Checkbox("Yellow",rbg,false);
+		rb4 = new Checkbox("None",rbg,false);
+		acc = new Checkbox("I accept the Terms and ");
+		cb = new Choice();
+		cb2 = new Choice();
+		t2.setEchoCharacter('*');
+		b1 = new Button("Click Me");	
+
+		b1.addMouseListener(this);
+		rb1.addItemListener(new ItemListener(){
+			public void itemStateChanged(ItemEvent ie){
+				setBackground(Color.BLACK);
+			}
+		});
+
+		rb2.addItemListener(new ItemListener(){
+			public void itemStateChanged(ItemEvent ie){
+				setBackground(Color.WHITE);
+			}
+		});
+
+		rb3.addItemListener(new ItemListener(){
+			public void itemStateChanged(ItemEvent ie){
+				setBackground(Color.YELLOW);
+			}
+		});
+
+		rb4.addItemListener(new ItemListener(){
+			public void itemStateChanged(ItemEvent ie){
+				setBackground(SystemColor.window);
+			}
+		});
+
+		t1.addTextListener(this);
+		
+		cb.add("Rupees");
+		cb.add("Dollar");
+		cb2.add("Rupees");
+		cb2.add("Dollar");
+
+		p2.add(rb1);p2.add(rb2);
+		p3.add(rb3);p3.add(rb4);
+
+		p1.add(l1);p1.add(t1);p1.add(l2);p1.add(t2);p1.add(l3);p1.add(cb);
+		p1.add(l4);p1.add(cb2);p1.add(p2);p1.add(p3);p1.add(acc);
+		p1.add(new Label("Conditions"));
+		p1.add(b1);
+
+		add(p1);
+	}
+	
+	public void mouseClicked(MouseEvent me)
+   {
+		Double a = Double.parseDouble(s);
+			if(cb.getSelectedItem() == "Rupees" && cb2.getSelectedItem() == "Dollar")
+				a = a / 60;
+			else if(cb.getSelectedItem() == "Dollar" && cb2.getSelectedItem() == "Rupees")
+				a = a * 60;
+				s = ""+a;
+			repaint();
+	}	
+
+	public void mousePressed(MouseEvent me)
+   {
+	}
+
+	public void mouseReleased(MouseEvent me)
+   {
+	}
+
+
+	 public void mouseEntered(MouseEvent me)
+ 	 {
+	 }
+
+	public void mouseExited(MouseEvent me)
+   {
+	}
+	
+	public void textValueChanged(TextEvent te)
+  	{
+		s = ""+t1.getText();
+	}
+
+	public void paint(Graphics g){
+		if(acc.getState()){
+			g.drawString("Your Answer is " + s,100,300);
+		}
+	}	
+
+}

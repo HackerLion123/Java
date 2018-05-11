@@ -1,0 +1,193 @@
+Script started on Fri 08 Sep 2017 10:18:43 AM IST
+bash-3.2$ cat Person/.java 
+import java.util.Date;
+public class Person
+{
+	private int pid;
+	private String name;
+	private Date dateOfBirth;
+	private double salary;
+	public Person() {};
+	public Person(int pid,String name,Date dateOfBirth,double Salary)
+	{
+		this.pid=pid;
+		this.name=name;
+		this.dateOfBirth=dateOfBirth;
+		this.salary=salary;
+	}
+	public boolean equals(Object obj)
+	{
+		if(this==obj)
+			return true;
+		if(obj==null)
+			return false;
+		if(this.getClass()!=obj.getClass())
+			return false;
+		Person temp=(Person)obj;
+		return this.pid==temp.pid &&
+					 this.name.equals(temp.name) &&
+					 this.dateOfBirth.equals(temp.dateOfBirth) &&
+					 this.salary==temp.salary;
+	}
+	public String toString()
+	{
+		String temp=this.getClass().getName();
+		temp=temp+"[ ";
+		temp=temp+"pid = "+this.pid+" , ";
+		temp=temp+"name = "+this.name+" , ";
+		temp=temp+"dateOfJoinig = "+this.dateOfBirth+" , ";
+		temp=temp+"salary = "+this.salary;
+		temp=temp+" ]";
+		return temp;
+	}
+}
+bash-3.2$ cat teacher.java
+import java.util.Arrays;
+import java.util.Date;
+public class Teacher extends Person
+{
+	private String [] subjectTaught;
+	private int experience;
+	public Teacher() {}
+	public Teacher(int pid,String name,Date dateOfBirth,double salary,String [] subjectTaught,int experience)
+	{
+		super(pid,name,dateOfBirth,salary);
+		this.subjectTaught=subjectTaught;
+		this.experience=experience;
+	}
+	public boolean equals(Object obj)
+	{
+		if(super.equals(obj))
+		{
+		Teacher temp=(Teacher)obj;
+		return Arrays.equals(subjectTaught,temp.subjectTaught) &&
+				experience==temp.experience;
+		}
+		else
+			return false;
+	}
+	public String toString()
+	{
+		String temp=super.toString()+" "+this.getClass().getName();
+		temp=temp+"[ ";
+		temp=temp+"subjectTaught = "+Arrays.toString(subjectTaught)+" , ";
+		temp=temp+"experience = "+this.experience;
+		temp=temp+" ]";
+		return temp;
+	}
+}
+bash-3.2$ cat personApp.java 
+bash: vatcat: command not found
+bash-3.2$ vatcat PersonApp.java 
+import java.util.Date;
+import java.util.Scanner;
+import java.text.DateFormat;
+public class PersonApp
+{
+	public static void main(String [] args) throws Exception
+	{
+		int pid;
+		String name;
+		Date dateOfBirth;
+		double salary;
+		String [] subjectTaught;
+		int experience;
+		int choice;
+		Scanner scan=new Scanner(System.in);
+		System.out.println("Enter the number of person : ");
+		int size = scan.nextInt();
+		Person []fac=new Person[size];
+		int i,j;
+		for(i=0;i<fac.length;i++)
+		{
+			System.out.print("Enter the id of person "+(i+1)+" : ");
+			pid=scan.nextInt();
+			System.out.print("Enter the name of person "+(i+1)+" : ");
+			name=scan.next();
+			System.out.print("Enter the dateOfBirth of person "+(i+1)+" : ");
+			String []dt=scan.next().split("/");
+			int year,day,month;
+			year=Integer.parseInt(dt[2])-1900;
+			month=Integer.parseInt(dt[1]);
+			day=Integer.parseInt(dt[0]);
+			/*day=scan.nextInt();
+			month=scan.nextInt();
+			year=scan.nextInt();*/
+			dateOfBirth=new Date(year,month,day);
+			System.out.print("Enter the salary of person "+(i+1)+" : ");
+			salary=scan.nextDouble();
+			System.out.print("Is the person "+(i+1)+" is a Teacher (y/n): ");
+			char ch=scan.next().charAt(0);
+			if(ch=='y')
+			{
+				System.out.print("Enter the subjectTaughts : ");
+				String qual=scan.next();
+				subjectTaught=qual.split(",");
+				System.out.print("Enter the experience : ");
+				experience=scan.nextInt();
+				fac[i]=new Teacher(pid,name,dateOfBirth,salary,subjectTaught,experience);
+			}
+			else
+			{
+				fac[i]=new Person(pid,name,dateOfBirth,salary);
+			}
+		}
+		do
+		{
+			System.out.println("********** MENU ***********");
+			System.out.println("   1 - check for equality");
+			System.out.println("   2 - Print using toString");
+			System.out.println("   3 - Exit");
+			System.out.println("***************************");
+			choice=scan.nextInt();
+			switch(choice)
+			{
+				case 1:
+					System.out.print("Enter the index of two person to check :");
+					i=scan.nextInt();
+					j=scan.nextInt();
+					if(i>=0&&i<fac.length)
+					{
+						if(j>=0&&j<fac.length)
+						{
+							if(fac[i].equals(fac[j]))
+								System.out.println("Both refers to a same person ");
+							else
+								System.out.println("Both are not equal");
+						}
+						else
+						{
+							System.out.println("Second index is invalid");
+						}
+					}
+					else
+						{
+							System.out.println("first index is invalid");
+						}
+					break;
+				case 2:
+					System.out.print("Enter the id of the person :");
+					i=scan.nextInt();
+					if(i>=0&&i<fac.length)
+						System.out.println(fac[i]);
+					else
+						System.out.println("invalid index");
+					break;
+				case 3:
+					break;
+				default:
+					System.out.println("Invalid choice");
+					break;
+			}
+		}while(choice!=3);
+	}
+}
+bash-3.2$ java Person
+Enter the number of person : 
+2
+Enter the id of person 1 : 123
+Enter the name of person 1 : balsing
+Enter the dateOfBirth of person 1 : 12/12/12bash-3.2$ exit
+exit
+
+Script done on Fri 08 Sep 2017 10:40:10 AM IST

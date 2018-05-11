@@ -1,0 +1,468 @@
+III-B@CBL021:~/15bcs082/ex4$ cat ex4.prn 
+Script started on Fri 04 Aug 2017 10:59:25 AM IST
+bash-3.2$ cd package/
+bash-3.2$ cd person/
+bash-3.2$ cat Student.java
+/**
+*
+*/
+package person;
+/**
+*
+*/
+public class Student
+{
+	private int rollno;
+	private  String name;
+	private String gender;
+	private int age;
+  public Student(){}
+	public Student(int rollno,String name,String gender,int age)
+	{
+		this.rollno=rollno;
+		this.name=name;
+		this.gender=gender;
+		this.age=age;
+	}
+  public void setRollNo(int rollno)
+  {
+    this.rollno = rollno;
+  }
+  public void setName(String name)
+  {
+    this.name  = name;
+  }
+  public void setGender(String gender)
+  {
+    this.gender = gender;
+  }
+  public void setAge(int age)
+  {
+    this.age = age;
+  }
+	public String getName()
+	{
+		return name;
+	}
+	public int getRollNo()
+	{
+		return rollno;
+	}
+	public int  getAge()
+	{
+		return age;
+	}
+	public String getGender()
+	{
+		return gender;
+	}
+	public String toString()
+	{
+		return rollno+"\t"+name+"\t"+gender+"\t"+age;
+	}
+}
+bash-3.2$ cat Employee.java
+package person;
+public  class Employee
+{
+	private int emp_id;
+	private String emp_name;
+	private String gender;
+	private int age;
+	private int salary;
+  public Employee(){}
+	public Employee(int emp_id,String emp_name,String gender,int age,int salary)
+	{
+		this.emp_id=emp_id;
+		this.emp_name=emp_name;
+		this.gender=gender;
+		this.age=age;
+		this.salary=salary;
+	}
+  public void setEmployeeId(int emp_id)
+  {
+    this.emp_id = emp_id;
+  }
+  public void setName(String name)
+  {
+    this.emp_name  = name;
+  }
+  public void setGender(String gender)
+  {
+    this.gender = gender;
+  }
+  public void setAge(int age)
+  {
+    this.age = age;
+  }
+  public void setSalary(int salary)
+  {
+    this.salary = salary;
+  }
+	public String getName()
+	{
+		return emp_name;
+	}
+	public String getGender()
+	{
+		return gender;
+	}
+	public int getEmployeeId()
+	{
+		return emp_id;
+	}
+	public int getSalary()
+	{
+		return salary;
+	}
+	public int getAge()
+	{
+		return age;
+	}
+	public String toString()
+	{
+		return emp_id+"\t"+emp_name+"\t"+gender+"\t"+age+"\t"+salary;
+	}
+}
+bash-3.2$ cd ..
+bash-3.2$ cat MyApp.java
+import person.Student;
+import person.Employee;
+import java.util.*;
+public class MyApp
+{
+	public static void main(String [] arg)
+	{
+		int n;
+		Student [] ss;
+		Employee [] ee;
+		Scanner sin =new Scanner(System.in);
+		System.out.print("Enter The Number Of Details	:");
+		 n=sin.nextInt();
+		ss=new Student[n];
+		ee=new Employee[n];
+		int a,d,e;
+		String b,c;
+		for(int i=0;i<ss.length;i++)
+		{
+			System.out.println("Enter The Student Details");
+			System.out.print("Enter The RollNo	:");
+			a=sin.nextInt();
+			System.out.print("Enter The Name	:");
+			b=sin.next();
+			System.out.print("Enter The Gender	:");
+			c=sin.next();
+			System.out.print("Enter The Age		:");
+			d=sin.nextInt();
+			ss[i]=new Student(a,b,c,d);
+			
+		}
+		for(int i=0;i<ee.length;i++)
+		{
+			System.out.println("Enter The Eployee Details");
+			System.out.print("Enter The EmployeeId	:");
+			a=sin.nextInt();
+			System.out.print("Enter The EmployeeName 	:");
+			b=sin.next();
+			System.out.print("Enter The Gender	:");
+			c=sin.next();
+			System.out.print("Enter The Age		:");
+			d=sin.nextInt();
+			System.out.print("Enter The Salary	:");
+			e=sin.nextInt();
+			ee[i]=new Employee(a,b,c,d,e);
+		}
+		int opt;
+		do
+		{
+			System.out.println("---------MENU---------\n1.
+      Display Student Details\n2.Display Employee Details\n3.Exit\n");
+			System.out.print("Enter Your Option	:");
+			opt=sin.nextInt();
+			switch(opt)
+			{
+				case 1:
+          System.out.println("RollNo\tName\tGender\tAge");
+					for(int i=0;i<ss.length;i++)
+						System.out.println(ss[i].toString());
+					break;
+				case 2:
+          System.out.println("EmpId\tName\tGender\tAge\tSlary");
+					for(int i=0;i<ee.length;i++)
+						System.out.println(ee[i].toString());
+					break;
+				case 3:
+					System.out.println("Exit");
+					break;
+				default:
+					System.out.println("Enter Valid Option");
+					break;
+			}
+		}while(opt!=3);
+	}	
+	
+		
+}
+bash-3.2$ java MyApp
+Enter The Number Of Details	:2
+Enter The Student Details
+Enter The RollNo	:1
+Enter The Name	:selva
+Enter The Gender	:male
+Enter The Age		:20
+Enter The Student Details
+Enter The RollNo	:2
+Enter The Name	:raj
+Enter The Gender	:male
+Enter The Age		:21
+Enter The Eployee Details
+Enter The EmployeeId	:101
+Enter The EmployeeName 	:vignesh
+Enter The Gender	:male
+Enter The Age		:35
+Enter The Salary	:75000
+Enter The Eployee Details
+Enter The EmployeeId	:102
+Enter The EmployeeName 	:dhanam
+Enter The Gender	:female
+Enter The Age		:40
+Enter The Salary	:95000
+---------MENU---------
+1. Display Student Details
+2.Display Employee Details
+3.Exit
+
+Enter Your Option	:1
+RollNo	Name	Gender	Age
+1	selva	male	20
+2	raj	male	21
+---------MENU---------
+1. Display Student Details
+2.Display Employee Details
+3.Exit
+
+Enter Your Option	:2
+EmpId	Name	Gender	Age	Slary
+101	vignesh	male	35	75000
+102	dhanam	female	40	95000
+---------MENU---------
+1. Display Student Details
+2.Display Employee Details
+3.Exit
+
+Enter Your Option	:3
+Exit
+bash-3.2$ cd ..
+bash-3.2$ cat Employee.java 
+public class Employee
+{
+  int employeeId;
+  String name;
+  float salary;
+  static int nextEmployeeId;
+  static int noOfInstanceCreated;
+  static
+  {
+    nextEmployeeId = 1;
+  }
+  {
+    employeeId = nextEmployeeId++;
+    noOfInstanceCreated++;
+  }
+  static void noOfInstanceCreated()
+  {
+    noOfInstanceCreated = 0;
+  }
+  static int getNoOfInstanceCreated()
+  {
+	  return noOfInstanceCreated;
+  }
+  public Employee()
+  {
+    this("MepcoEmployee");
+  }
+  public Employee(String aName)
+  {
+    this(aName,10000);
+  }
+  public Employee(String aName,float aSalary)
+  {
+    name = aName;
+    salary = aSalary;
+  }
+  public Employee(Employee e)
+  {
+    employeeId = e.employeeId;
+    name = e.name;
+    salary = e.salary;
+  }
+  public String toString()
+  {
+    return "\t"+employeeId+"\t"+name+"\t\t"+salary;
+  }
+  float getSalary()
+  {
+    return salary;
+  }
+  void setName(String aName)
+  {
+    name = aName;
+  }
+  void setSalary(float aSalary)
+  {
+     salary = aSalary;
+  }
+  void copy(Employee e)
+  {
+	  this.employeeId = e.employeeId;
+	  this.name = e.name;
+	  this.salary = e.salary;
+  }
+}
+bash-3.2$ cat EmployeeApp 
+import java.util.Scanner;
+public class EmployeeApp
+{
+  static
+  {
+    System.out.println("Welcome To My Employee Application");
+  }
+  public static void main(String[] arg)
+  {
+	  int choice;
+    Scanner sin = new Scanner(System.in);
+    System.out.println("Enter The Number Of Employee's To Be Handle");
+    int esize = sin.nextInt();
+    Employee[] E = new Employee[esize];
+    for(int i=0;i<E.length;i++)
+    {
+      System.out.println("Enter The Employee "+(1+i)+" Details");
+      System.out.print("Enter Name :");
+      String name = sin.next();
+      System.out.println("\n");
+      System.out.print("Enter Salary :");
+      float salary = sin.nextFloat();
+      System.out.println("\n");
+      E[i] = new Employee(name,salary);
+    }
+    do
+    {
+	  System.out.println("------Menu------");
+      System.out.println("1.Display All Employee Details");
+      System.out.println("2.Display Employee Deatils Based On Salary");
+      System.out.println("3.Copy One Employee Deatils To Another");
+      System.out.println("4.Exit\nEnter Your Option");
+      choice = sin.nextInt();
+      switch(choice)
+      {
+        case 1:
+              System.out.println("EmployeeID\tName\t\tSalary");
+              for(int i=0;i<E.length;i++)
+                System.out.println(E[i].toString());
+              break;
+        case 2:
+              System.out.println("Enter The Salary");
+              float salary = sin.nextFloat();
+              System.out.println("EmployeeID\tName\tSalary");
+              for(int i=0;i<E.length;i++)
+              {
+                if(salary<=E[i].getSalary())
+                {
+                  System.out.println(E[i].toString());
+                }
+              }
+              break;
+        case 3:
+              System.out.println("Enter The Source Employee");
+              int src = sin.nextInt();
+              Employee C = new Employee(E[src-1]);
+              System.out.println("Copied Successfully");
+              System.out.println("EmployeeID\tName\tSalary");
+              System.out.println(C.toString());
+              break;
+        case 4:
+              System.out.println("Exit");
+              break;
+        default:
+              System.out.println("Enter Valid Option");
+              break;
+      }
+    }while(choice!=4);
+	System.out.println("Number Of Instance Created : "+Employee.getNoOf
+  InstanceCreated());
+  }
+}
+bash-3.2$ java EmployeeApp
+Welcome To My Employee Application
+Enter The Number Of Employee's To Be Handle
+2
+Enter The Employee 1 Details
+Enter Name :selva
+
+
+Enter Salary :86500
+
+
+Enter The Employee 2 Details
+Enter Name :raj
+
+
+Enter Salary :50000
+
+
+------Menu------
+1.Display All Employee Details
+2.Display Employee Deatils Based On Salary
+3.Copy One Employee Deatils To Another
+4.Exit
+Enter Your Option
+1
+EmployeeID	Name		Salary
+	1	selva		86500.0
+	2	raj		50000.0
+------Menu------
+1.Display All Employee Details
+2.Display Employee Deatils Based On Salary
+3.Copy One Employee Deatils To Another
+4.Exit
+Enter Your Option
+2
+Enter The Salary
+60000
+EmployeeID	Name	Salary
+	1	selva		86500.0
+------Menu------
+1.Display All Employee Details
+2.Display Employee Deatils Based On Salary
+3.Copy One Employee Deatils To Another
+4.Exit
+Enter Your Option
+3
+Enter The Source Employee
+1
+Copied Successfully
+EmployeeID	Name	Salary
+	1	selva		86500.0
+------Menu------
+1.Display All Employee Details
+2.Display Employee Deatils Based On Salary
+3.Copy One Employee Deatils To Another
+4.Exit
+Enter Your Option
+1
+EmployeeID	Name		Salary
+	1	selva		86500.0
+	2	raj		50000.0
+------Menu------
+1.Display All Employee Details
+2.Display Employee Deatils Based On Salary
+3.Copy One Employee Deatils To Another
+4.Exit
+Enter Your Option
+4
+Exit
+Number Of Instance Created : 3
+bash-3.2$ exit
+exit
+
+Script done on Fri 04 Aug 2017 11:04:23 AM IST
